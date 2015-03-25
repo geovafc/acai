@@ -53,6 +53,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		
+		
 		EstabelecimentoRN rn = new EstabelecimentoRN(Estabelecimento.class, this);
 		
 		
@@ -82,6 +84,8 @@ public class MainActivity extends Activity {
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
 				.getResourceId(1, -1)));
 		
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
+				.getResourceId(2, -1)));
 
 
 		// Recycle the typed array
@@ -187,6 +191,10 @@ public class MainActivity extends Activity {
 		case 1:
 			buscarLocalizacao();
 			fragment = new LocalizarFragment();
+			break;
+			
+		case 2:
+			fragment = new SeloFragment();
 			break;
 		
 		

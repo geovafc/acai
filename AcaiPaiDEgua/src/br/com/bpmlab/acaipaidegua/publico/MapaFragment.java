@@ -11,6 +11,7 @@ import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -65,7 +66,7 @@ public class MapaFragment extends Fragment {
 
 		map.setMyLocationEnabled(true);
 
-		/** mostra o mata com imagem de satélite */
+		/** mostra o mata com imagem de satï¿½lite */
 		// map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
 		/** *Adcionar marcadores */
@@ -73,36 +74,22 @@ public class MapaFragment extends Fragment {
 			lat = estabelecimento.getLatitude();
 			lon = estabelecimento.getLongitude();
 			nome = estabelecimento.getNome();
+			String endereco = estabelecimento.getEndereco();
 			location = new LatLng(lat, lon);
 
 			MarkerOptions marcador = new MarkerOptions();
 			marcador.position(location);
-			marcador.title(nome);
+			marcador.title(nome).snippet(endereco);
+			marcador.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker));
 			map.addMarker(marcador);
 			map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 20));
-			map.animateCamera(CameraUpdateFactory.zoomTo(10), 200, null);
+			map.animateCamera(CameraUpdateFactory.zoomTo(12), 200, null);
 
-		}
+			}
 
 		return rootView;
 	}
 
-//	@Override
-//	public void onDetach() {
-//		super.onDetach();
-//
-//		try {
-//			Field childFragmentManager = Fragment.class
-//					.getDeclaredField("mChildFragmentManager");
-//			childFragmentManager.setAccessible(true);
-//			childFragmentManager.set(this, null);
-//
-//		} catch (NoSuchFieldException e) {
-//			throw new RuntimeException(e);
-//		} catch (IllegalAccessException e) {
-//			throw new RuntimeException(e);
-//		}
-//	}
 
 
 	

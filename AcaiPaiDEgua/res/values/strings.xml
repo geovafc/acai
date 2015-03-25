@@ -11,7 +11,7 @@
     <string-array name="nav_drawer_items">
         <item >Mapa</item>
         <item >Próx. de mim</item>
-        
+        <item>Sobre o selo</item>
       
     </string-array>
     
@@ -20,7 +20,7 @@
     <array name="nav_drawer_icons">
         <item>@drawable/ic_home</item>
         <item>@drawable/ic_people</item>
-      
+      	<item>@drawable/ic_communities</item>
     </array>
     
     <!-- Content Description -->
