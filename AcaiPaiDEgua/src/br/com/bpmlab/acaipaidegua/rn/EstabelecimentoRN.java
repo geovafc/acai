@@ -27,18 +27,18 @@ public class EstabelecimentoRN extends GenericRN<Estabelecimento>{
            // Latitude e Longitude de Ponto 2
             double latP2 = latitudeP2.doubleValue() * Math.PI / 180;
             double lonP2 = longitudeP2.doubleValue() * Math.PI/ 180;
-            //Diferenças
+            //Diferenï¿½as
             double difLat = latP1 - latP2;
             double difLon = lonP1 - lonP2;
 
-            //Senos das diferenças das latitudes
+            //Senos das diferenï¿½as das latitudes
             double sinDifLat = Math.sin( difLat / 2);
             double sinDifLon = Math.sin( difLon / 2);
 
             double valorA = sinDifLat * sinDifLat + Math.cos(latP1) * Math.cos(latP2) * sinDifLon * sinDifLon;
             double valorC = 2 * Math.atan2(Math.sqrt(valorA), Math.sqrt(1 - valorA));
 
-            return valorC * RAIO * 1000;
+            return valorC * RAIO ;
         }
 
     }
@@ -50,7 +50,7 @@ public class EstabelecimentoRN extends GenericRN<Estabelecimento>{
         // Latitude e Longitude de P2
         double latP2 = latitudeP2 * Math.PI / 180;
         double lonP2 = longitudeP2 * Math.PI / 180;
-        // Diferenças
+        // Diferenï¿½as
         double dLat = latP1 - latP2;
         double dLon = lonP1 - lonP2;
 
@@ -60,7 +60,7 @@ public class EstabelecimentoRN extends GenericRN<Estabelecimento>{
         double valorA = sinDLat * sinDLat + Math.cos(latP1) * Math.cos(latP2) * sinDLon * sinDLon;
         double valorC = 2 * Math.atan2(Math.sqrt(valorA), Math.sqrt(1 - valorA));
 
-        return valorC * RAIO * 1000;
+        return valorC * RAIO;
 
     }
 

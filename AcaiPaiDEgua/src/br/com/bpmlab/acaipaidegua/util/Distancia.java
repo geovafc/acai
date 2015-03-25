@@ -3,15 +3,24 @@ package br.com.bpmlab.acaipaidegua.util;
 public class Distancia<T> implements Comparable<Distancia<T>> {
 
     private final T t;
-    private final Integer distancia;
+    private  Integer distancia;
 
     public Distancia(T t,
             Integer distancia) {
         this.t = t;
         this.distancia = distancia;
     }
+    
+    
 
-    @Override
+    public Integer getDistancia() {
+		return distancia;
+	}
+
+
+
+
+	@Override
     public int compareTo(Distancia<T> o) {
         if (o == null) {
             return -1;
@@ -28,5 +37,7 @@ public class Distancia<T> implements Comparable<Distancia<T>> {
     public String toString() {
         return t + " - " + distancia;
     }
+    
+    
 
 }

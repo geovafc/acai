@@ -4,17 +4,20 @@ package br.com.bpmlab.acaipaidegua.publico;
 
 import java.util.ArrayList;
 
+import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer.InitiateMatchResult;
+
 import br.com.bpmlab.acaipaidegua.R;
 import br.com.bpmlab.acaipaidegua.adapter.NavDrawerListAdapter;
 import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 import br.com.bpmlab.acaipaidegua.model.NavDrawerItem;
 import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
-import br.com.bpmlab.acaipaidegua.util.LatLonUtil;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -42,6 +45,8 @@ public class MainActivity extends Activity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
+	public double lat;
+	public double lon;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,8 @@ public class MainActivity extends Activity {
 		
 		
 		System.out.println("quantidade inserida: "+ rn.obterTodos().size());
+		
+		
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -119,31 +126,7 @@ public class MainActivity extends Activity {
 	}
 	
 
-	public void IniciarServico()
-    {
-    	LocationManager locationManager = (LocationManager)getSystemService(MainActivity.LOCATION_SERVICE);
-    	
-    	LocationListener locationListener = new LocationListener() {
-    	    public void onLocationChanged(Location location) {
-    	      Atualizar(location);
-    	    }
-
-    	    public void onStatusChanged(String provider, int status, Bundle extras) {}
-
-    	    public void onProviderEnabled(String provider) {}
-
-    	    public void onProviderDisabled(String provider) {}
-    	  };
-
-    	  locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-    }
-    
-    public void Atualizar(Location location)
-    {
-    	LatLonUtil.latUsuario = location.getLatitude();
-    	LatLonUtil.lonUsuario = location.getLongitude();
-    
-    }
+	
 	/**
 	 * Slide menu item click listener
 	 * */
@@ -171,8 +154,8 @@ public class MainActivity extends Activity {
 		}
 		// Handle action bar actions click
 		switch (item.getItemId()) {
-		case R.id.action_settings:
-			return true;
+//		case R.id.action_settings:
+//			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -197,11 +180,12 @@ public class MainActivity extends Activity {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			IniciarServico();
+			
 			fragment = new MapaFragment();
 			
 			break;
 		case 1:
+			buscarLocalizacao();
 			fragment = new LocalizarFragment();
 			break;
 		
@@ -251,4 +235,31 @@ public class MainActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-}
+	public void buscarLocalizacao()
+	{
+		
+	LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+	LocationListener locationListener = new LocationListener() {		
+		
+		
+	public void onLocationChanged(Location location) {
+		AtualizarLocalizacao(location);
+	}
+	public void onStatusChanged(String provider, int status, Bundle extras) {}
+	public void onProviderEnabled(String provider) {}
+	public void onProviderDisabled(String provider) {}
+	};
+	Criteria criteria = new Criteria();
+	String provider = locationManager.getBestProvider(criteria, false);
+	
+	locationManager.requestLocationUpdates(provider, 0, 0,  locationListener);
+	}
+	
+	public void AtualizarLocalizacao(Location location)
+	{
+	lat = location.getLatitude();
+	lon= location.getLongitude();
+	}
+		
+	}
+

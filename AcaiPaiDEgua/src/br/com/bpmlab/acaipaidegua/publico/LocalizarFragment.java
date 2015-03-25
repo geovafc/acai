@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+
 import br.com.bpmlab.acaipaidegua.R;
 import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
 import br.com.bpmlab.acaipaidegua.util.Distancia;
-import br.com.bpmlab.acaipaidegua.util.LatLonUtil;
-
 import android.app.Fragment;
+import android.app.ProgressDialog;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,51 +23,34 @@ import android.widget.SimpleAdapter;
 
 public class LocalizarFragment extends Fragment {
 
+	
 	private EstabelecimentoRN estabelecimentoRN;
 	ListView listV;
-	private Estabelecimento estabelecimento1;
 	private List<HashMap<String, Object>> estabelecimentos;
 	private double distancia;
-	private String[] nome;
-	private List<String> nomes;
 	private ListView listaestab;
-	private double latUsuario=LatLonUtil.latUsuario;
-	private double lonUsuario=LatLonUtil.lonUsuario;
 	DecimalFormat df = new DecimalFormat("0.0");  
 	String distanciaFormatada ;
+	private ProgressDialog progresD;
+	LocationManager lm = null;
+	ProgressDialog pd = null;
+	double latUsuario ;
+	double lonUsuario;
+	List<Distancia<Estabelecimento>> estabelecimentoOrdenadoDistancia;
 
-
-	public LocalizarFragment() {
+	public LocalizarFragment() {	
+		
 	}
-	
-	String[] nomeStrings = new String []{"rayan", "Geovane"};
 
-	private List<HashMap<String, Object>> listarEstabelecimentos() {
-		estabelecimentos = new ArrayList<HashMap<String, Object>>();
-		HashMap<String, Object> item;
-		for (Estabelecimento e : estabelecimentoRN.obterTodos()) {
-			distancia=(estabelecimentoRN.distancia(latUsuario,lonUsuario, e.getLatitude(), e.getLongitude()))/1000;
-			distanciaFormatada = df.format(distancia); 
-			
-			item = new HashMap<String, Object>();
-			item.put("nome", e.getNome());
-			System.out.println(e.getNome());
-			item.put("distancia", distanciaFormatada+" KM");
-			System.out.println(distancia);
-			
-			item.put("endereco", e.getEndereco()+", "+e.getBairro());
-			item.put("telefone", e.getTelefone());
-			
-			// item.put("ligar", R.drawable.ligar);
-			estabelecimentos.add(item);
-			
-		}
-		System.out.println("Quantidade: "+estabelecimentos.size());
-		return estabelecimentos;
-	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
+		MainActivity ma = (MainActivity) getActivity();
+		latUsuario = ma.lat;
+		lonUsuario = ma.lon;
+		
+	pd=ProgressDialog.show(getActivity(), "Aguarde", "...");
 
 		estabelecimentoRN = new EstabelecimentoRN(Estabelecimento.class,
 				getActivity());
@@ -74,75 +58,89 @@ public class LocalizarFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_localizar,
 				container, false);
 
-		/*
-		 * Calcular a distância entre dois pontos
-		 * 
-		 * TextView dist= (TextView) findViewById(R.id.dist);
-		 * 
-		 * Estabelecimento estabelecimento2 = new Estabelecimento();
-		 * 
-		 * estabelecimento1= estabelecimentoRN.obterId(1); estabelecimento2=
-		 * estabelecimentoRN.obterId(3);
-		 * 
-		 * System.out.println("nome1 "+estabelecimento1.getNome() +
-		 * "nome2 "+estabelecimento2.getNome()); double distanciaMetro =
-		 * DistanciaUtil.distancia(estabelecimento1.getLatitude(),
-		 * estabelecimento1.getLongitude(), estabelecimento2.getLatitude(),
-		 * estabelecimento2.getLongitude()); double distanciaKM = distanciaMetro
-		 * / 1000.0;
-		 * 
-		 * dist.setText(Double.toString(distanciaKM));
-		 */
 
-//		List<Estabelecimento> estabelecimentoOrdenado= new ArrayList<Estabelecimento>();
-//		estabelecimentoOrdenado=ordenarEstabelecimentos(estabelecimentos,
+		
+//		List<Distancia<Estabelecimento>> estabelecimentoOrdenado= new ArrayList<Distancia<Estabelecimento>>();
+//		estabelecimentoOrdenado=ordenarEstabelecimentos(estabDesord,
 //	             new BigDecimal(latUsuario),
 //	            new BigDecimal(lonUsuario));
+//		for (Distancia<Estabelecimento> ed: estabelecimentoOrdenado){
+//			System.out.println("estabelecimento " +ed.getObjeto().getNome()+ "distancia "+ed.getDistancia());
+//		}
+		
+		
 		String[] de = { "nome", "distancia", "endereco", "telefone" };
 		int[] para = { R.id.lista_model_nome, R.id.lista_model_distancia, R.id.lista_model_endereco, R.id.lista_model_telefone };
-		//
+		
 		SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(),
 				listarEstabelecimentos(), R.layout.model_list_estabelecimento,
 				de, para);
+		
 		//
 		listaestab = (ListView) rootView.findViewById(R.id.lista_estabelecimento);
 		listaestab.setAdapter(adapter);
+		pd.dismiss();
 		
 		return rootView;
 
 	}
 
-//	public void ordenarEstabelecimentos(List<Estabelecimento> estabelecimentos,
-//            BigDecimal latitude,
-//            BigDecimal longitude) {
-//        Distancia ed = null;
-//        List<Distancia<Estabelecimento>> listaED = new ArrayList<Distancia<Estabelecimento>>();
-//        //Converte de decimal para double
-//        BigDecimal bdLat = new BigDecimal(latitude.doubleValue());  
-//        double latDouble = bdLat.doubleValue();  
-//        
-//        BigDecimal bdLon = new BigDecimal(longitude.doubleValue());  
-//        double lonDouble = bdLon.doubleValue(); 
-//        
-//        if (estabelecimentos != null
-//                && latitude != null
-//                && longitude != null) {
-//            for (Estabelecimento estabelecimento : estabelecimentos) {
-//                int distancia = (int) estabelecimentoRN.distancia(latDouble, lonDouble, estabelecimento.getLatitude(), estabelecimento.getLongitude());
-//                ed = new Distancia(estabelecimento, distancia);
-//                listaED.add(ed);
-//            }
-//            Collections.sort(listaED);
-//            estabelecimentos.clear();
-////            for (int i = 0; i < listaTD.size(); i++) {
-////                taxistas.add(listaTD.get(i).getObjeto());
-////            }
-//        }
-//    }
+	public List<Distancia<Estabelecimento>> ordenarEstabelecimentos(List<Estabelecimento> estabelecimentos,
+            BigDecimal latitude,
+            BigDecimal longitude) {
+        Distancia ed = null;
+        List<Distancia<Estabelecimento>> listaED = new ArrayList<Distancia<Estabelecimento>>();
+        //Converte de decimal para double
+        BigDecimal bdLat = new BigDecimal(latitude.doubleValue());  
+        double latDouble = bdLat.doubleValue();  
+        
+        BigDecimal bdLon = new BigDecimal(longitude.doubleValue());  
+        double lonDouble = bdLon.doubleValue(); 
+        
+        if (estabelecimentos != null
+                && latitude != null
+                && longitude != null) {
+            for (Estabelecimento estabelecimento : estabelecimentos) {
+                int distancia = (int) estabelecimentoRN.distancia(latDouble, lonDouble, estabelecimento.getLatitude(), estabelecimento.getLongitude());
+                ed = new Distancia(estabelecimento, distancia);
+                listaED.add(ed);
+                
+            }
+            Collections.sort(listaED);
+            estabelecimentos.clear();
+            
+            for (int i = 0; i < listaED.size(); i++) {
+                estabelecimentos.add(listaED.get(i).getObjeto());
+            }
+        }
+        return listaED;
+    }
 	
-
+	private List<HashMap<String, Object>> listarEstabelecimentos() {
+		estabelecimentos = new ArrayList<HashMap<String, Object>>();
+		estabelecimentoOrdenadoDistancia=ordenarEstabelecimentos(estabelecimentoRN.obterTodos(),
+	             new BigDecimal(latUsuario),
+	            new BigDecimal(lonUsuario));
+		HashMap<String, Object> item;
+		for (Distancia<Estabelecimento> e : estabelecimentoOrdenadoDistancia) {
+			//distancia=(estabelecimentoRN.distancia(latUsuario,lonUsuario, e.getLatitude(), e.getLongitude()));
+			distanciaFormatada = df.format(e.getDistancia()); 			
+			item = new HashMap<String, Object>();
+			item.put("nome", e.getObjeto().getNome());
+			item.put("distancia", distanciaFormatada+" KM");
+			item.put("endereco", e.getObjeto().getEndereco()+", "+e.getObjeto().getBairro());
+			item.put("telefone", e.getObjeto().getTelefone());			
+			// item.put("ligar", R.drawable.ligar);
+			estabelecimentos.add(item);
+			
+		}
+		System.out.println("lat: "+latUsuario);
+		return estabelecimentos;
+	}
+		
 	private void realizarChamada() {
 
 	}
 
+	
 }
