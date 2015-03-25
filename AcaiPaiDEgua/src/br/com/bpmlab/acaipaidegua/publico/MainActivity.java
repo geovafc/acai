@@ -9,11 +9,15 @@ import br.com.bpmlab.acaipaidegua.adapter.NavDrawerListAdapter;
 import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 import br.com.bpmlab.acaipaidegua.model.NavDrawerItem;
 import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
+import br.com.bpmlab.acaipaidegua.util.LatLonUtil;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -113,7 +117,33 @@ public class MainActivity extends Activity {
 			displayView(0);
 		}
 	}
+	
 
+	public void IniciarServico()
+    {
+    	LocationManager locationManager = (LocationManager)getSystemService(MainActivity.LOCATION_SERVICE);
+    	
+    	LocationListener locationListener = new LocationListener() {
+    	    public void onLocationChanged(Location location) {
+    	      Atualizar(location);
+    	    }
+
+    	    public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+    	    public void onProviderEnabled(String provider) {}
+
+    	    public void onProviderDisabled(String provider) {}
+    	  };
+
+    	  locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+    }
+    
+    public void Atualizar(Location location)
+    {
+    	LatLonUtil.latUsuario = location.getLatitude();
+    	LatLonUtil.lonUsuario = location.getLongitude();
+    
+    }
 	/**
 	 * Slide menu item click listener
 	 * */
@@ -167,7 +197,9 @@ public class MainActivity extends Activity {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
+			IniciarServico();
 			fragment = new MapaFragment();
+			
 			break;
 		case 1:
 			fragment = new LocalizarFragment();

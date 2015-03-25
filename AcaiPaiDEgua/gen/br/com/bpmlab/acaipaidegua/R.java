@@ -510,6 +510,7 @@ containing a value of this type.
         public static final int buy_with_google=0x7f0c0012;
         public static final int classic=0x7f0c0014;
         public static final int counter=0x7f0c001d;
+        public static final int distancia=0x7f0c0022;
         public static final int donate_with_google=0x7f0c0013;
         public static final int drawer_layout=0x7f0c0018;
         public static final int frame_container=0x7f0c0019;
@@ -518,13 +519,13 @@ containing a value of this type.
         public static final int holo_light=0x7f0c0008;
         public static final int hybrid=0x7f0c0003;
         public static final int icon=0x7f0c001b;
-        public static final int list=0x7f0c001f;
         public static final int list_slidermenu=0x7f0c001a;
+        public static final int lista_estabelecimento=0x7f0c001e;
         public static final int lista_model_certsesma=0x7f0c0027;
         public static final int lista_model_distancia=0x7f0c0023;
         public static final int lista_model_nome=0x7f0c0021;
         public static final int lista_model_telefone=0x7f0c0025;
-        public static final int map=0x7f0c001e;
+        public static final int map=0x7f0c001f;
         public static final int match_parent=0x7f0c000e;
         public static final int monochrome=0x7f0c0016;
         public static final int none=0x7f0c0002;
@@ -537,7 +538,6 @@ containing a value of this type.
         public static final int strict_sandbox=0x7f0c000b;
         public static final int terrain=0x7f0c0006;
         public static final int textView1=0x7f0c0020;
-        public static final int textView2=0x7f0c0022;
         public static final int textView3=0x7f0c0024;
         public static final int textView4=0x7f0c0026;
         public static final int title=0x7f0c001c;
@@ -551,8 +551,7 @@ containing a value of this type.
         public static final int drawer_list_item=0x7f030001;
         public static final int fragment_localizar=0x7f030002;
         public static final int fragment_mapa=0x7f030003;
-        public static final int lista_estabelecimento=0x7f030004;
-        public static final int model_list_estabelecimento=0x7f030005;
+        public static final int model_list_estabelecimento=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f0b0000;

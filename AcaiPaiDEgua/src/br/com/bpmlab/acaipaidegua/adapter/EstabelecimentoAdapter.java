@@ -43,7 +43,7 @@ public class EstabelecimentoAdapter extends BaseAdapter{
 		Estabelecimento e=(Estabelecimento) getItem(position);
 		LayoutInflater layout = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);		
 		View v= layout.inflate(br.com.bpmlab.acaipaidegua.R.layout.fragment_localizar, null);
-		TextView txtNome= (TextView) v.findViewById(br.com.bpmlab.acaipaidegua.R.id.list);
+		TextView txtNome= (TextView) v.findViewById(br.com.bpmlab.acaipaidegua.R.id.lista_estabelecimento);
 		txtNome.setText(e.getNome());
 		return v;
 	}

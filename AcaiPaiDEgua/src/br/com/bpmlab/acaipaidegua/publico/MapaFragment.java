@@ -15,6 +15,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -102,6 +104,8 @@ public class MapaFragment extends Fragment {
 //		}
 //	}
 
+
+	
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();
