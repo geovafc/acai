@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Large Text"
+        android:textColor="@color/counter_text_color"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     
@@ -24,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="Small Text"
+                android:textColor="@color/counter_text_color"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <LinearLayout
@@ -37,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="Small Text"
+                android:textColor="@color/counter_text_color"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
@@ -45,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="Small Text"
+                android:textColor="@color/counter_text_color"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </LinearLayout>
