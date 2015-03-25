@@ -53,6 +53,9 @@ public class LocalizarFragment extends Fragment {
 			System.out.println(e.getNome());
 			item.put("distancia", distanciaFormatada+" KM");
 			System.out.println(distancia);
+			item.put("endereco", e.getEndereco()+", "+e.getBairro());
+			item.put("telefone", e.getTelefone());
+			
 			// item.put("ligar", R.drawable.ligar);
 			estabelecimentos.add(item);
 			
@@ -94,8 +97,8 @@ public class LocalizarFragment extends Fragment {
 //		estabelecimentoOrdenado=ordenarEstabelecimentos(estabelecimentos,
 //	             new BigDecimal(latUsuario),
 //	            new BigDecimal(lonUsuario));
-		String[] de = { "nome", "distancia" };
-		int[] para = { R.id.lista_model_nome, R.id.distancia  };
+		String[] de = { "nome", "distancia", "endereco", "telefone" };
+		int[] para = { R.id.lista_model_nome, R.id.lista_model_distancia, R.id.lista_model_endereco, R.id.lista_model_telefone };
 		//
 		SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(),
 				listarEstabelecimentos(), R.layout.model_list_estabelecimento,
