@@ -53,6 +53,7 @@ public class LocalizarFragment extends Fragment {
 			System.out.println(e.getNome());
 			item.put("distancia", distanciaFormatada+" KM");
 			System.out.println(distancia);
+			
 			item.put("endereco", e.getEndereco()+", "+e.getBairro());
 			item.put("telefone", e.getTelefone());
 			
@@ -106,6 +107,7 @@ public class LocalizarFragment extends Fragment {
 		//
 		listaestab = (ListView) rootView.findViewById(R.id.lista_estabelecimento);
 		listaestab.setAdapter(adapter);
+		
 		return rootView;
 
 	}
