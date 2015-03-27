@@ -16,8 +16,8 @@ public class EstabelecimentoRN extends GenericRN<Estabelecimento>{
 	
 	private static final int RAIO =6371; //Raio da terra
 
-    public static double distancia(BigDecimal latitudeP1, BigDecimal longitudeP1, BigDecimal latitudeP2,
-                                   BigDecimal longitudeP2 ){
+    public static double distancia(BigDecimal latitudeP1, BigDecimal longitudeP1, Double latitudeP2,
+    		Double longitudeP2 ){
         if (latitudeP1 == null || latitudeP2 == null || longitudeP1 == null || longitudeP1 == null){
             return -1;
         } else {

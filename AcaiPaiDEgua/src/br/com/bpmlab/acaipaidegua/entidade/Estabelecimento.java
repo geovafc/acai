@@ -1,5 +1,7 @@
 package br.com.bpmlab.acaipaidegua.entidade;
 
+import java.math.BigDecimal;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -16,9 +18,9 @@ public class Estabelecimento {
     @DatabaseField
     private String telefone;
     @DatabaseField
-    private double latitude;
+    private Double latitude;
     @DatabaseField
-    private double longitude;
+    private Double longitude;
 
 
 
@@ -63,19 +65,19 @@ public class Estabelecimento {
         this.telefone = telefone;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 }

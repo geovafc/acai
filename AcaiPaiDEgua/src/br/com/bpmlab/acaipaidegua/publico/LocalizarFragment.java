@@ -11,13 +11,19 @@ import br.com.bpmlab.acaipaidegua.R;
 import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
 import br.com.bpmlab.acaipaidegua.util.Distancia;
+import br.com.bpmlab.acaipaidegua.util.GlobalUtil;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -27,7 +33,6 @@ public class LocalizarFragment extends Fragment {
 	private EstabelecimentoRN estabelecimentoRN;
 	ListView listV;
 	private List<HashMap<String, Object>> estabelecimentos;
-	private double distancia;
 	private ListView listaestab;
 	DecimalFormat df = new DecimalFormat("0.0");  
 	String distanciaFormatada ;
@@ -36,6 +41,7 @@ public class LocalizarFragment extends Fragment {
 	ProgressDialog pd = null;
 	double latUsuario ;
 	double lonUsuario;
+	private Estabelecimento estabelecimento;
 	List<Distancia<Estabelecimento>> estabelecimentoOrdenadoDistancia;
 
 	public LocalizarFragment() {	
@@ -57,16 +63,6 @@ public class LocalizarFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_localizar,
 				container, false);
-
-
-		
-//		List<Distancia<Estabelecimento>> estabelecimentoOrdenado= new ArrayList<Distancia<Estabelecimento>>();
-//		estabelecimentoOrdenado=ordenarEstabelecimentos(estabDesord,
-//	             new BigDecimal(latUsuario),
-//	            new BigDecimal(lonUsuario));
-//		for (Distancia<Estabelecimento> ed: estabelecimentoOrdenado){
-//			System.out.println("estabelecimento " +ed.getObjeto().getNome()+ "distancia "+ed.getDistancia());
-//		}
 		
 		
 		String[] de = { "nome", "distancia", "endereco", "telefone" };
@@ -81,55 +77,41 @@ public class LocalizarFragment extends Fragment {
 		listaestab.setAdapter(adapter);
 		pd.dismiss();
 		
+		listaestab.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	            public void onItemClick(AdapterView<?> item, View v, int position, long id) {
+	            	System.out.println("clicou");
+	        		
+//	        		estabelecimento =(Estabelecimento) item.getItemAtPosition(position);
+//	        		realizarChamada(estabelecimento.getTelefone());
+	            }
+	        });
+		
 		return rootView;
 
 	}
+//	
+//	public void onListItemClick(ListView l, View v, int position, long d){
+//		System.out.println("clicou");
+//		
+//		estabelecimento =(Estabelecimento) l.getAdapter().getItem(position);
+//		realizarChamada(estabelecimento.getTelefone());		
+//	}
 
-	public List<Distancia<Estabelecimento>> ordenarEstabelecimentos(List<Estabelecimento> estabelecimentos,
-            BigDecimal latitude,
-            BigDecimal longitude) {
-        Distancia ed = null;
-        List<Distancia<Estabelecimento>> listaED = new ArrayList<Distancia<Estabelecimento>>();
-        //Converte de decimal para double
-        BigDecimal bdLat = new BigDecimal(latitude.doubleValue());  
-        double latDouble = bdLat.doubleValue();  
-        
-        BigDecimal bdLon = new BigDecimal(longitude.doubleValue());  
-        double lonDouble = bdLon.doubleValue(); 
-        
-        if (estabelecimentos != null
-                && latitude != null
-                && longitude != null) {
-            for (Estabelecimento estabelecimento : estabelecimentos) {
-                int distancia = (int) estabelecimentoRN.distancia(latDouble, lonDouble, estabelecimento.getLatitude(), estabelecimento.getLongitude());
-                ed = new Distancia(estabelecimento, distancia);
-                listaED.add(ed);
-                
-            }
-            Collections.sort(listaED);
-            estabelecimentos.clear();
-            
-            for (int i = 0; i < listaED.size(); i++) {
-                estabelecimentos.add(listaED.get(i).getObjeto());
-            }
-        }
-        return listaED;
-    }
+
 	
 	private List<HashMap<String, Object>> listarEstabelecimentos() {
 		estabelecimentos = new ArrayList<HashMap<String, Object>>();
-		estabelecimentoOrdenadoDistancia=ordenarEstabelecimentos(estabelecimentoRN.obterTodos(),
+		estabelecimentoOrdenadoDistancia=GlobalUtil.ordenarEstabelecimentos(estabelecimentoRN.obterTodos(),
 	             new BigDecimal(latUsuario),
 	            new BigDecimal(lonUsuario));
 		HashMap<String, Object> item;
-		for (Distancia<Estabelecimento> e : estabelecimentoOrdenadoDistancia) {
-			//distancia=(estabelecimentoRN.distancia(latUsuario,lonUsuario, e.getLatitude(), e.getLongitude()));
-			distanciaFormatada = df.format(e.getDistancia()); 			
+		for (Distancia<Estabelecimento> ed : estabelecimentoOrdenadoDistancia) {
+			distanciaFormatada = df.format(ed.getDistancia()); 			
 			item = new HashMap<String, Object>();
-			item.put("nome", e.getObjeto().getNome());
+			item.put("nome", ed.getObjeto().getNome());
 			item.put("distancia", distanciaFormatada+" KM");
-			item.put("endereco", e.getObjeto().getEndereco()+", "+e.getObjeto().getBairro());
-			item.put("telefone", e.getObjeto().getTelefone());			
+			item.put("endereco", ed.getObjeto().getEndereco()+", "+ed.getObjeto().getBairro());
+			item.put("telefone", ed.getObjeto().getTelefone());			
 			// item.put("ligar", R.drawable.ligar);
 			estabelecimentos.add(item);
 			
@@ -138,7 +120,33 @@ public class LocalizarFragment extends Fragment {
 		return estabelecimentos;
 	}
 		
-	private void realizarChamada() {
+	private void realizarChamada(final String telefone) {
+		
+		if (telefone != null ){
+			AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
+			alerta.setTitle("Ligação");
+			alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
+			alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					Uri uri = Uri.parse("tel:"+telefone);
+					
+					Intent it = new Intent(Intent.ACTION_CALL, uri);
+					startActivity(it);
+					
+				}
+			});
+			alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {					
+					
+				}
+			});
+			
+			
+		}
 
 	}
 

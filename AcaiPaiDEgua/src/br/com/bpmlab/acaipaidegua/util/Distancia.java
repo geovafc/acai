@@ -1,19 +1,21 @@
 package br.com.bpmlab.acaipaidegua.util;
 
+import java.math.BigDecimal;
+
 public class Distancia<T> implements Comparable<Distancia<T>> {
 
     private final T t;
-    private  Integer distancia;
+    private  Double distancia;
 
     public Distancia(T t,
-            Integer distancia) {
+    		Double distancia) {
         this.t = t;
         this.distancia = distancia;
     }
     
     
 
-    public Integer getDistancia() {
+    public Double getDistancia() {
 		return distancia;
 	}
 
