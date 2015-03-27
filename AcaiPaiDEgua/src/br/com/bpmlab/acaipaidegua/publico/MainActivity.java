@@ -4,8 +4,6 @@ package br.com.bpmlab.acaipaidegua.publico;
 
 import java.util.ArrayList;
 
-import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer.InitiateMatchResult;
-
 import br.com.bpmlab.acaipaidegua.R;
 import br.com.bpmlab.acaipaidegua.adapter.NavDrawerListAdapter;
 import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;

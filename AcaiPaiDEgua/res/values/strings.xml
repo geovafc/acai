@@ -25,5 +25,21 @@
     
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="selotexto">A Secretaria de Desenvolvimento Agropecuário e da Pesca (Sedap) 
+        passa a divulgar no site, a lista atualizada de estabelecimentos que já estão certificados 
+        com o selo Açaí Bom do Programa Estadual de Qualidade do Açaí (PEQA). O programa reúne 14 
+        instituições públicas e privadas que trabalham em parceria para garantir um nível de 
+        qualidade cada vez maior para o produto, com a introdução de boas práticas em toda a cadeia 
+        produtiva, da coleta do fruto à comercialização. Um dos principais resultados do programa foi 
+        o desenvolvimento de um equipamento chamado tanque de branqueamento que usa alta temperatura 
+        para diminuir a carga microbiana, minimizando, por exemplo, a possibilidade de contaminação 
+        com o transmissor da Doença de Chagas. O processo não altera nem a cor e nem o sabor do açaí.
+        O tanque possui dimensões reduzidas, podendo ser instalado até em pequenos pontos de produção 
+        do açaí, sendo de operação simples e de baixo custo. Interessado em manter ativa e ampliar a
+        cadeia do açaí, garantindo a qualidade do produto o Programa criou mecanismos para facilitar 
+        a inclusão de novos produtores, como cursos de capacitação e linhas de crédito para aquisição 
+        de equipamentos. Os interessados em obter maiores informações sobre o programa devem procurar 
+        a gerência de Fruticultura da Sedap.
+</string>
 
 </resources>

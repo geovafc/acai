@@ -12,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -35,7 +36,6 @@ public class MapaFragment extends Fragment {
 	private Double lat;
 	private Double lon;
 	private String nome;
-
 	public MapaFragment() {
 	}
 
@@ -66,8 +66,29 @@ public class MapaFragment extends Fragment {
 
 		map.setMyLocationEnabled(true);
 
+		// Habilitar botão de zoom no mapa
+		map.getUiSettings().setZoomControlsEnabled(true);
+		// habilitar compasso de búlsola
+		map.getUiSettings().setCompassEnabled(true);
+
+		// map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 20));
+		// map.animateCamera(CameraUpdateFactory.zoomTo(12), 200, null);
+		// habiliza o zoom por gestos, dois cliques
+		// map.getUiSettings().setZoomGesturesEnabled(true);
 		/** mostra o mata com imagem de satï¿½lite */
 		// map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
+		LatLng casa = new LatLng(-1.4562033, -48.477089715);
+		// Construct a CameraPosition focusing on Mountain View and animate the
+		// camera to that position.
+		CameraPosition cameraPosition = new CameraPosition.Builder()
+				.target(casa) // Define o centro do mapa de
+				.zoom(13) // Define o zoom
+				.bearing(350) // Define a orientação da câmara para leste
+				.tilt(0) // Define a inclinação da câmara a 30 graus
+				.build(); // Cria um CameraPosition do construtor
+
+		map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 		/** *Adcionar marcadores */
 		for (Estabelecimento estabelecimento : estabelecimentos) {
@@ -80,25 +101,49 @@ public class MapaFragment extends Fragment {
 			MarkerOptions marcador = new MarkerOptions();
 			marcador.position(location);
 			marcador.title(nome).snippet(endereco);
-			marcador.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker));
+			marcador.icon(BitmapDescriptorFactory
+					.fromResource(R.drawable.ic_marker));
 			map.addMarker(marcador);
-			map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 20));
-			map.animateCamera(CameraUpdateFactory.zoomTo(12), 200, null);
 
-			}
+		}
 
 		return rootView;
 	}
 
+	// @Override
+	// public void onDetach() {
+	// super.onDetach();
+	//
+	// try {
+	// Field childFragmentManager = Fragment.class
+	// .getDeclaredField("mChildFragmentManager");
+	// childFragmentManager.setAccessible(true);
+	// childFragmentManager.set(this, null);
+	//
+	// } catch (NoSuchFieldException e) {
+	// throw new RuntimeException(e);
+	// } catch (IllegalAccessException e) {
+	// throw new RuntimeException(e);
+	// }
+	// }
 
+	// @Override
+	// public void onDestroyView() {
+	// super.onDestroyView();
+	//
+	// if (mapfragment != null)
+	// getFragmentManager().beginTransaction().remove(mapfragment)
+	// .commit();
+	// }
 
-	
 	@Override
-	public void onDestroyView() {
-		super.onDestroyView();
+	public void onDestroy() {
 
-		if (mapfragment != null)
+		if (mapfragment.isResumed()) {
 			getFragmentManager().beginTransaction().remove(mapfragment)
 					.commit();
+		}
+		super.onDestroy();
 	}
+
 }

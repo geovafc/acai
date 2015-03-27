@@ -503,7 +503,8 @@ containing a value of this type.
         public static final int powered_by_google_light=0x7f02002c;
     }
     public static final class id {
-        public static final int action_settings=0x7f0c0025;
+        public static final int ScrollView1=0x7f0c0020;
+        public static final int action_settings=0x7f0c0028;
         public static final int adjust_height=0x7f0c0000;
         public static final int adjust_width=0x7f0c0001;
         public static final int book_now=0x7f0c0010;
@@ -522,10 +523,10 @@ containing a value of this type.
         public static final int icon=0x7f0c001b;
         public static final int list_slidermenu=0x7f0c001a;
         public static final int lista_estabelecimento=0x7f0c001e;
-        public static final int lista_model_distancia=0x7f0c0024;
-        public static final int lista_model_endereco=0x7f0c0022;
-        public static final int lista_model_nome=0x7f0c0021;
-        public static final int lista_model_telefone=0x7f0c0023;
+        public static final int lista_model_distancia=0x7f0c0027;
+        public static final int lista_model_endereco=0x7f0c0025;
+        public static final int lista_model_nome=0x7f0c0024;
+        public static final int lista_model_telefone=0x7f0c0026;
         public static final int map=0x7f0c001f;
         public static final int match_parent=0x7f0c000e;
         public static final int monochrome=0x7f0c0016;
@@ -538,8 +539,10 @@ containing a value of this type.
         public static final int slide=0x7f0c0017;
         public static final int strict_sandbox=0x7f0c000b;
         public static final int terrain=0x7f0c0006;
+        public static final int textView1=0x7f0c0023;
+        public static final int textView2=0x7f0c0021;
+        public static final int textView3=0x7f0c0022;
         public static final int title=0x7f0c001c;
-        public static final int webView1=0x7f0c0020;
         public static final int wrap_content=0x7f0c000f;
     }
     public static final class integer {
@@ -680,6 +683,7 @@ containing a value of this type.
         public static final int drawer_close=0x7f06002a;
         public static final int drawer_open=0x7f060029;
         public static final int hello_world=0x7f060028;
+        public static final int selotexto=0x7f06002c;
         public static final int store_picture_message=0x7f060001;
         public static final int store_picture_title=0x7f060000;
         /**  Text on a placeholder buy button when Google Play services is not
