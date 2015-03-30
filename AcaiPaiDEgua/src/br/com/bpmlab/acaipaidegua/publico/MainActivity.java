@@ -28,7 +28,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements LocationListener{
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -49,7 +49,10 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
+		//Liga o GPS 
+		iniciarLocalizacao();
+		
 		EstabelecimentoRN rn = new EstabelecimentoRN(Estabelecimento.class,
 				this);
 
@@ -119,6 +122,20 @@ public class MainActivity extends Activity {
 			// on first time display view for first nav item
 			displayView(0);
 		}
+	}
+	
+		@Override
+	protected void onResume(){
+		super.onResume();
+		
+	}
+	
+	@Override
+	protected void onPause(){
+		super.onPause();
+		System.out.println("onpause");
+		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		locationManager.removeUpdates(this);
 	}
 
 	/**
@@ -234,35 +251,49 @@ public class MainActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	public void buscarLocalizacao() {
-
-		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		LocationListener locationListener = new LocationListener() {
-
-			public void onLocationChanged(Location location) {
-				AtualizarLocalizacao(location);
-			}
-
-			public void onStatusChanged(String provider, int status,
-					Bundle extras) {
-			}
-
-			public void onProviderEnabled(String provider) {
-			}
-
-			public void onProviderDisabled(String provider) {
-			}
-		};
-		Criteria criteria = new Criteria();
-		String provider = locationManager.getBestProvider(criteria, false);
-
-		locationManager
-				.requestLocationUpdates(provider, 0, 0, locationListener);
-	}
-
-	public void AtualizarLocalizacao(Location location) {
+	@Override
+	public void onLocationChanged(Location location) {
+		
 		lat = location.getLatitude();
 		lon = location.getLongitude();
+		
+		
+		
 	}
 
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void iniciarLocalizacao(){
+		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		
+		Criteria criteria = new Criteria();
+		String provider = locationManager.getBestProvider(criteria, false);
+		
+		locationManager.requestLocationUpdates(provider, 0, 0, this);
+		
+		Location loc =  locationManager.getLastKnownLocation(provider);
+		obterUltimaLocalizacao(loc);
+		
+	}
+	
+	public void obterUltimaLocalizacao(Location loc){
+			lastLat = loc.getLatitude();
+			lastLon= loc.getLongitude();
+	}
 }
