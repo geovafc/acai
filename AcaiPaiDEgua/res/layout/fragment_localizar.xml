@@ -1,12 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="74dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/common_signin_btn_icon_dark" />
+
+        <LinearLayout
+            android:layout_width="194dp"
+            android:layout_height="73dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="178dp"
+                android:layout_height="73dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome:"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Endereço:"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.75"
+                    android:text="Distância:"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/lista_estabelecimento"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="395dp" >
     </ListView>
 
-</RelativeLayout>
+</LinearLayout>

@@ -2,27 +2,26 @@
 <resources>
 
     <string name="app_name">Acai Pai Degua</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Sobre</string>
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Acai Pai Degua1</string>
     <string name="drawer_close">Acai Pai Degua2</string>
-    
+
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Mapa</item>
-        <item >Próx. de mim</item>
+        <item>Mapa</item>
+        <item>Próx. de mim</item>
         <item>Sobre o selo</item>
-      
     </string-array>
-    
+
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_home</item>
-        <item>@drawable/ic_people</item>
-      	<item>@drawable/ic_communities</item>
+        <item>@drawable/ic_mapa</item>
+        <item>@drawable/ic_proximo</item>
+        <item>@drawable/ic_info</item>
     </array>
-    
+
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="selotexto">A Secretaria de Desenvolvimento Agropecuário e da Pesca (Sedap) 
@@ -39,7 +38,10 @@
         cadeia do açaí, garantindo a qualidade do produto o Programa criou mecanismos para facilitar 
         a inclusão de novos produtores, como cursos de capacitação e linhas de crédito para aquisição 
         de equipamentos. Os interessados em obter maiores informações sobre o programa devem procurar 
-        a gerência de Fruticultura da Sedap.
-</string>
+        a gerência de Fruticultura da Sedap.</string>
+        
+    <string name="textosobreapp">
+        Desenvolvido por Alunos de Sistema de Informação da Universidade Federal Rural da Amazônia(UFRA)
+        </string>
 
 </resources>

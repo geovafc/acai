@@ -1,7 +1,5 @@
 package br.com.bpmlab.acaipaidegua.publico;
 
-
-
 import java.util.ArrayList;
 
 import br.com.bpmlab.acaipaidegua.R;
@@ -13,6 +11,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.location.Criteria;
@@ -50,15 +49,11 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		
-		
-		EstabelecimentoRN rn = new EstabelecimentoRN(Estabelecimento.class, this);
-		
-		
-		System.out.println("quantidade inserida: "+ rn.obterTodos().size());
-		
-		
+
+		EstabelecimentoRN rn = new EstabelecimentoRN(Estabelecimento.class,
+				this);
+
+		System.out.println("quantidade inserida: " + rn.obterTodos().size());
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -81,10 +76,9 @@ public class MainActivity extends Activity {
 		// Find People
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
 				.getResourceId(1, -1)));
-		
+
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
 				.getResourceId(2, -1)));
-
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -126,9 +120,7 @@ public class MainActivity extends Activity {
 			displayView(0);
 		}
 	}
-	
 
-	
 	/**
 	 * Slide menu item click listener
 	 * */
@@ -156,8 +148,10 @@ public class MainActivity extends Activity {
 		}
 		// Handle action bar actions click
 		switch (item.getItemId()) {
-//		case R.id.action_settings:
-//			return true;
+		case R.id.action_settings:
+			Intent it = new Intent(getBaseContext(), SobreApp.class);
+			startActivity(it);
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -182,20 +176,19 @@ public class MainActivity extends Activity {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			
+
 			fragment = new MapaFragment();
-			
+
 			break;
 		case 1:
 			buscarLocalizacao();
 			fragment = new LocalizarFragment();
 			break;
-			
+
 		case 2:
 			fragment = new SeloFragment();
 			break;
-		
-		
+
 		default:
 			break;
 		}
@@ -241,31 +234,35 @@ public class MainActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	public void buscarLocalizacao()
-	{
-		
-	LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-	LocationListener locationListener = new LocationListener() {		
-		
-		
-	public void onLocationChanged(Location location) {
-		AtualizarLocalizacao(location);
-	}
-	public void onStatusChanged(String provider, int status, Bundle extras) {}
-	public void onProviderEnabled(String provider) {}
-	public void onProviderDisabled(String provider) {}
-	};
-	Criteria criteria = new Criteria();
-	String provider = locationManager.getBestProvider(criteria, false);
-	
-	locationManager.requestLocationUpdates(provider, 0, 0,  locationListener);
-	}
-	
-	public void AtualizarLocalizacao(Location location)
-	{
-	lat = location.getLatitude();
-	lon= location.getLongitude();
-	}
-		
+	public void buscarLocalizacao() {
+
+		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		LocationListener locationListener = new LocationListener() {
+
+			public void onLocationChanged(Location location) {
+				AtualizarLocalizacao(location);
+			}
+
+			public void onStatusChanged(String provider, int status,
+					Bundle extras) {
+			}
+
+			public void onProviderEnabled(String provider) {
+			}
+
+			public void onProviderDisabled(String provider) {
+			}
+		};
+		Criteria criteria = new Criteria();
+		String provider = locationManager.getBestProvider(criteria, false);
+
+		locationManager
+				.requestLocationUpdates(provider, 0, 0, locationListener);
 	}
 
+	public void AtualizarLocalizacao(Location location) {
+		lat = location.getLatitude();
+		lon = location.getLongitude();
+	}
+
+}

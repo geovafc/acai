@@ -132,8 +132,8 @@ public class LocalizarFragment extends Fragment {
 			
 			AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
 			System.out.println("num "+ telefone);
-			alerta.setTitle("LigaÃ§Ã£o");
-			alerta.setMessage("Deseja realizar uma ligaÃ§Ã£o para o ponto de venda de aÃ§aÃ­ ?");
+			alerta.setTitle("Ligação");
+			alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
 
