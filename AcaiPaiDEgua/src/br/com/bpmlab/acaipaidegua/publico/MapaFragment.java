@@ -36,6 +36,9 @@ public class MapaFragment extends Fragment {
 	private Double lat;
 	private Double lon;
 	private String nome;
+	private Double lastLatUsuario;
+	private Double lastLonUsuario;
+	LatLng meuLocal;
 	public MapaFragment() {
 	}
 
@@ -54,6 +57,13 @@ public class MapaFragment extends Fragment {
 		} catch (InflateException e) {
 
 		}
+		
+		
+		MainActivity ma = (MainActivity) getActivity(); 
+		latUsuario = ma.lat;
+		lonUsuario = ma.lon;
+		lastLatUsuario = ma.lastLat;
+		lastLonUsuario = ma.lastLon;
 
 		estabelecimentoRN = new EstabelecimentoRN(Estabelecimento.class,
 				getActivity());
@@ -66,26 +76,30 @@ public class MapaFragment extends Fragment {
 
 		map.setMyLocationEnabled(true);
 
-		// Habilitar botão de zoom no mapa
+		// Habilitar botÃ£o de zoom no mapa
 		map.getUiSettings().setZoomControlsEnabled(true);
-		// habilitar compasso de búlsola
+		// habilitar compasso de bÃºlsola
 		map.getUiSettings().setCompassEnabled(true);
 
 		// map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 20));
 		// map.animateCamera(CameraUpdateFactory.zoomTo(12), 200, null);
 		// habiliza o zoom por gestos, dois cliques
 		// map.getUiSettings().setZoomGesturesEnabled(true);
-		/** mostra o mata com imagem de satï¿½lite */
+		/** mostra o mata com imagem de satÃ¯Â¿Â½lite */
 		// map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
-		LatLng casa = new LatLng(-1.4562033, -48.477089715);
+		System.out.println("lat "+latUsuario+ "lon "+lonUsuario
+				+ "lastLat "+lastLatUsuario+"lastLon "
+				+lastLonUsuario);
+		
+		defineMelhorCentroDaCamera();
 		// Construct a CameraPosition focusing on Mountain View and animate the
 		// camera to that position.
 		CameraPosition cameraPosition = new CameraPosition.Builder()
-				.target(casa) // Define o centro do mapa de
+				.target(meuLocal) // Define o centro do mapa de
 				.zoom(13) // Define o zoom
-				.bearing(350) // Define a orientação da câmara para leste
-				.tilt(0) // Define a inclinação da câmara a 30 graus
+				.bearing(350) // Define a orientaÃ§Ã£o da cÃ¢mara para leste
+				.tilt(0) // Define a inclinaÃ§Ã£o da cÃ¢mara a 30 graus
 				.build(); // Cria um CameraPosition do construtor
 
 		map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
@@ -108,6 +122,16 @@ public class MapaFragment extends Fragment {
 		}
 
 		return rootView;
+	}
+	
+		public void defineMelhorCentroDaCamera(){
+		if (latUsuario != 0.0 && lonUsuario != 0.0){
+			meuLocal = new LatLng(latUsuario, lonUsuario);
+			System.out.println("lat");
+		}else {
+			System.out.println("last");
+			meuLocal = new LatLng(lastLatUsuario, lastLonUsuario);
+		}
 	}
 
 	// @Override
