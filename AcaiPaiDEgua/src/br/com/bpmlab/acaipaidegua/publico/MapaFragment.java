@@ -35,9 +35,11 @@ public class MapaFragment extends Fragment {
 	private List<Estabelecimento> estabelecimentos;
 	private Double lat;
 	private Double lon;
-	private String nome;
+	private Double latUsuario;
+	private Double lonUsuario;
 	private Double lastLatUsuario;
 	private Double lastLonUsuario;
+	private String nome;
 	LatLng meuLocal;
 	public MapaFragment() {
 	}
