@@ -44,6 +44,8 @@ public class MainActivity extends Activity implements LocationListener{
 	private NavDrawerListAdapter adapter;
 	public double lat;
 	public double lon;
+	public double lastLat;
+	public double lastLon;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
