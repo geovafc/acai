@@ -165,9 +165,9 @@ public class LocalizarFragment extends Fragment {
 			latUsuario = ma.lastLat;
 			lonUsuario = ma.lastLon;
 			
-			System.out.println("last");
+			System.out.println("melhor last");
 		}else {
-			System.out.println("lat");
+			System.out.println("melhor lat");
 			latUsuario = ma.lat;
 			lonUsuario = ma.lon;
 		}
