@@ -54,9 +54,7 @@ public class LocalizarFragment extends Fragment {
 			Bundle savedInstanceState) {
 		
 		estabelecimento = new Estabelecimento(); 
-		MainActivity ma = (MainActivity) getActivity();
-		latUsuario = ma.lat;
-		lonUsuario = ma.lon;
+		escolherMelhorLatLng();
 
 		pd = ProgressDialog.show(getActivity(), "Aguarde", "...");
 
@@ -132,8 +130,8 @@ public class LocalizarFragment extends Fragment {
 			
 			AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
 			System.out.println("num "+ telefone);
-			alerta.setTitle("Liga��o");
-			alerta.setMessage("Deseja realizar uma liga��o para o ponto de venda de a�a� ?");
+			alerta.setTitle("Ligação");
+			alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
 
@@ -146,7 +144,7 @@ public class LocalizarFragment extends Fragment {
 
 						}
 					});
-			alerta.setNegativeButton("Não",
+			alerta.setNegativeButton("NÃ£o",
 					new DialogInterface.OnClickListener() {
 
 						@Override
@@ -156,9 +154,25 @@ public class LocalizarFragment extends Fragment {
 					});
 			alerta.show();
 		} else {
-			Toast.makeText(getActivity(),"Número de telefone não informado", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(),"NÃºmero de telefone nÃ£o informado", Toast.LENGTH_SHORT).show();
 		}
 
+	}
+	
+		public void escolherMelhorLatLng(){
+		MainActivity ma = (MainActivity) getActivity();
+		if (ma.lat == 0.0 && ma.lon == 0.0){
+			latUsuario = ma.lastLat;
+			lonUsuario = ma.lastLon;
+			
+			System.out.println("last");
+		}else {
+			System.out.println("lat");
+			latUsuario = ma.lat;
+			lonUsuario = ma.lon;
+		}
+		
+		
 	}
 
 }
