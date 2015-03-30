@@ -26,6 +26,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 public class LocalizarFragment extends Fragment {
 
@@ -38,6 +39,7 @@ public class LocalizarFragment extends Fragment {
 	private ProgressDialog progresD;
 	LocationManager lm = null;
 	ProgressDialog pd = null;
+	HashMap<String, Object> itemE;
 	double latUsuario;
 	double lonUsuario;
 	private Estabelecimento estabelecimento;
@@ -50,7 +52,8 @@ public class LocalizarFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
+		
+		estabelecimento = new Estabelecimento(); 
 		MainActivity ma = (MainActivity) getActivity();
 		latUsuario = ma.lat;
 		lonUsuario = ma.lon;
@@ -79,13 +82,14 @@ public class LocalizarFragment extends Fragment {
 
 		listaestab
 				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-					public void onItemClick(AdapterView<?> item, View v,
+					public void onItemClick(AdapterView<?> adapter, View v,
 							int position, long id) {
-						System.out.println("clicou");
-
-						// estabelecimento =(Estabelecimento)
-						// item.getItemAtPosition(position);
-						// realizarChamada(estabelecimento.getTelefone());
+					
+						
+		 itemE = (HashMap<String, Object>) adapter.getItemAtPosition(position);
+		 
+			
+		 realizarChamada(itemE.get("telefone").toString());
 					}
 				});
 
@@ -106,16 +110,16 @@ public class LocalizarFragment extends Fragment {
 		estabelecimentoOrdenadoDistancia = GlobalUtil.ordenarEstabelecimentos(
 				estabelecimentoRN.obterTodos(), new BigDecimal(latUsuario),
 				new BigDecimal(lonUsuario));
-		HashMap<String, Object> item;
+		
 		for (Distancia<Estabelecimento> ed : estabelecimentoOrdenadoDistancia) {
 			distanciaFormatada = df.format(ed.getDistancia());
-			item = new HashMap<String, Object>();
-			item.put("nome", ed.getObjeto().getNome());
-			item.put("distancia", distanciaFormatada + " KM");
-			item.put("endereco", ed.getObjeto().getEndereco());
-			item.put("telefone", ed.getObjeto().getTelefone());
+			itemE = new HashMap<String, Object>();
+			itemE.put("nome", ed.getObjeto().getNome());
+			itemE.put("distancia", distanciaFormatada + " KM");
+			itemE.put("endereco", ed.getObjeto().getEndereco());
+			itemE.put("telefone", ed.getObjeto().getTelefone());
 			// item.put("ligar", R.drawable.ligar);
-			estabelecimentos.add(item);
+			estabelecimentos.add(itemE);
 
 		}
 		System.out.println("lat: " + latUsuario);
@@ -123,9 +127,11 @@ public class LocalizarFragment extends Fragment {
 	}
 
 	private void realizarChamada(final String telefone) {
-
-		if (telefone != null) {
+		
+		if (!telefone.equals("")) {
+			
 			AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
+			System.out.println("num "+ telefone);
 			alerta.setTitle("Ligação");
 			alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
 			alerta.setPositiveButton("Sim",
@@ -148,7 +154,9 @@ public class LocalizarFragment extends Fragment {
 
 						}
 					});
-
+			alerta.show();
+		} else {
+			Toast.makeText(getActivity(),"Número de telefone não informado", Toast.LENGTH_SHORT).show();
 		}
 
 	}
