@@ -130,9 +130,12 @@ public class MapaFragment extends Fragment {
 		if (latUsuario != 0.0 && lonUsuario != 0.0){
 			meuLocal = new LatLng(latUsuario, lonUsuario);
 			System.out.println("lat");
-		}else {
+		}else if (lastLatUsuario != 0.0 && lastLonUsuario != 0.0 ){
 			System.out.println("last");
 			meuLocal = new LatLng(lastLatUsuario, lastLonUsuario);
+		} else if (lastLatUsuario == 0.0 && lastLonUsuario == 0.0){
+			
+			meuLocal = new LatLng(-1.4621577, -48.4909634);
 		}
 	}
 

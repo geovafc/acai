@@ -8,9 +8,11 @@ import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 import br.com.bpmlab.acaipaidegua.model.NavDrawerItem;
 import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -18,6 +20,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -28,7 +31,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class MainActivity extends Activity implements LocationListener{
+public class MainActivity extends Activity implements LocationListener {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -46,19 +49,16 @@ public class MainActivity extends Activity implements LocationListener{
 	public double lon;
 	public double lastLat;
 	public double lastLon;
+	private LocationManager locationManager;
+	String provider;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		//Liga o GPS 
-		iniciarLocalizacao();
-		
-		EstabelecimentoRN rn = new EstabelecimentoRN(Estabelecimento.class,
-				this);
-
-		System.out.println("quantidade inserida: " + rn.obterTodos().size());
+		if (lat == 0.0 && lon == 0.0) {
+			obterUltimaLocalizacao();
+		}
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -125,15 +125,21 @@ public class MainActivity extends Activity implements LocationListener{
 			displayView(0);
 		}
 	}
-	
-		@Override
-	protected void onResume(){
-		super.onResume();
-		
-	}
-	
+
 	@Override
-	protected void onPause(){
+	protected void onResume() {
+		super.onResume();
+		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		iniciarLocalizacao(locationManager);
+
+		if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+			chamaAlertaGPS();
+		}
+
+	}
+
+	@Override
+	protected void onPause() {
 		super.onPause();
 		System.out.println("onpause");
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -200,7 +206,6 @@ public class MainActivity extends Activity implements LocationListener{
 
 			break;
 		case 1:
-			buscarLocalizacao();
 			fragment = new LocalizarFragment();
 			break;
 
@@ -255,47 +260,103 @@ public class MainActivity extends Activity implements LocationListener{
 
 	@Override
 	public void onLocationChanged(Location location) {
-		
+
 		lat = location.getLatitude();
 		lon = location.getLongitude();
-		
-		
-		
+
 	}
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	public void iniciarLocalizacao(){
-		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		
+
+	public void iniciarLocalizacao(LocationManager locationManager) {
+
 		Criteria criteria = new Criteria();
-		String provider = locationManager.getBestProvider(criteria, false);
-		
+		provider = locationManager.getBestProvider(criteria, false);
+
 		locationManager.requestLocationUpdates(provider, 0, 0, this);
-		
-		Location loc =  locationManager.getLastKnownLocation(provider);
-		obterUltimaLocalizacao(loc);
-		
+
 	}
-	
-	public void obterUltimaLocalizacao(Location loc){
+
+	public void obterUltimaLocalizacao() {
+		Criteria criteria = new Criteria();
+		LocationManager locationM = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		String providerLast = locationM.getBestProvider(criteria, false);
+		Location loc = locationM.getLastKnownLocation(providerLast);
+		if (loc != null) {
+
+			System.out.println("lastLat " + lastLat);
 			lastLat = loc.getLatitude();
-			lastLon= loc.getLongitude();
+			lastLon = loc.getLongitude();
+
+		}
+
+	}
+
+	public void chamaAlertaGPS() {
+		AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+
+		alerta.setTitle("Ativar Localização");
+		alerta.setMessage("Ative o GPS para melhorar a precisão da sua localização."
+				+ "Deseja ligar o GPS agora?");
+		alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Intent localSetting = new Intent(
+						android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				startActivity(localSetting);
+
+			}
+		});
+		alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		alerta.show();
+	}
+
+	public void chamaAlertaGPSWIFI() {
+		AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+
+		alerta.setTitle("Ativar Localização");
+		alerta.setMessage("Melhore a precisão da sua localização."
+				+ "Deseja ligar o GPS ou o WI-FI agora?");
+		alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Intent localSetting = new Intent(
+						android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+				startActivity(localSetting);
+
+			}
+		});
+		alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		alerta.show();
 	}
 }

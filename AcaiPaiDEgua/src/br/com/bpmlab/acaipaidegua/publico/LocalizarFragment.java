@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import br.com.bpmlab.acaipaidegua.R;
 import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
@@ -161,16 +163,20 @@ public class LocalizarFragment extends Fragment {
 	
 		public void escolherMelhorLatLng(){
 		MainActivity ma = (MainActivity) getActivity();
-		if (ma.lat == 0.0 && ma.lon == 0.0){
+		if (ma.lat == 0.0 && ma.lon == 0.0 && ma.lastLat != 0.0 && ma.lastLon != 0.0){
 			latUsuario = ma.lastLat;
 			lonUsuario = ma.lastLon;
 			
 			System.out.println("melhor last");
-		}else {
+		}else if (ma.lat != 0.0 && ma.lon != 0.0){
 			System.out.println("melhor lat");
 			latUsuario = ma.lat;
 			lonUsuario = ma.lon;
+		}else {
+			latUsuario = -1.4621577;
+			lonUsuario = -48.4909634;
 		}
+		
 		
 		
 	}
