@@ -30,7 +30,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/braco"
+                    android:textColor="@color/branco"
                     android:text="Nome:"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -38,7 +38,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                     android:textColor="@color/braco"
+                     android:textColor="@color/branco"
                     android:text="Endereço:"
                     android:textSize="10sp" />
 
@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.75"
-                     android:textColor="@color/braco"
+                     android:textColor="@color/branco"
                     android:text="Distância:"
                     android:textSize="10sp" />
             </LinearLayout>
