@@ -66,9 +66,9 @@ public class LocalizarFragment extends Fragment {
 		View rootView = inflater.inflate(R.layout.fragment_localizar,
 				container, false);
 
-		String[] de = { "nome", "distancia", "endereco", "telefone" };
+		String[] de = { "nome", "distancia", "endereco"};
 		int[] para = { R.id.lista_model_nome, R.id.lista_model_distancia,
-				R.id.lista_model_endereco, R.id.lista_model_telefone };
+				R.id.lista_model_endereco};
 
 		SimpleAdapter adapter = new SimpleAdapter(getActivity()
 				.getBaseContext(), listarEstabelecimentos(),

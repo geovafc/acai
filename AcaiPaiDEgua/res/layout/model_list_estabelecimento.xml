@@ -5,33 +5,55 @@
     
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/lista_model_nome"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/branco" />
+        android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/lista_model_endereco"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/branco" />
+        <ImageButton
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="16dp"
+            
+            android:src="@drawable/ic_telefone" />
 
-    <TextView
-        android:id="@+id/lista_model_distancia"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/branco" />
+        <TextView
+            android:id="@+id/lista_model_endereco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+             
+            android:textColor="@color/branco" 
+            android:layout_below="@+id/lista_model_nome"
+            android:text="TextView" />
 
-    <TextView
-        android:id="@+id/lista_model_telefone "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/branco" />
+        <TextView
+            android:id="@+id/lista_model_distancia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/lista_model_endereco"
+            android:layout_marginRight="18dp"
+            android:layout_toLeftOf="@+id/imageView1"
+            android:text="Medium Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/branco"
+            android:textSize="13sp" />
 
+        <TextView
+            android:id="@+id/lista_model_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/branco" />
+        
+    </RelativeLayout>
+    
 </LinearLayout>
+
+
+
+          
