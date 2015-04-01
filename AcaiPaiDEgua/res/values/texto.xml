@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="texto">
+<![CDATA[ 
+    <h1>Açaí Pai Dégua</h1> 
+     
+<b>A aplicação foi desenvilvida por alunos de Sistema de informação da Universidade Federal Rural da Amazônia</b>. 
+     
+Endere&ccedil;o: <b>Rua x</b>. 
+    ]]>
+    </string>
+
+</resources>
