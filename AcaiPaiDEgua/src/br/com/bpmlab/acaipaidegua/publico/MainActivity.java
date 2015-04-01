@@ -53,10 +53,11 @@ public class MainActivity extends Activity implements LocationListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		chamaAlertaGPS();
 		if (lat == 0.0 && lon == 0.0) {
 			obterUltimaLocalizacao();
 		}
-
+		
 		mTitle = mDrawerTitle = getTitle();
 
 		// load slide menu items
@@ -129,9 +130,7 @@ public class MainActivity extends Activity implements LocationListener {
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		iniciarLocalizacao(locationManager);
 
-		if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-			chamaAlertaGPS();
-		}
+		
 
 	}
 
@@ -306,6 +305,10 @@ public class MainActivity extends Activity implements LocationListener {
 	}
 
 	public void chamaAlertaGPS() {
+		LocationManager locM = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		if (!locM.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+			
+		
 		AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
 		alerta.setTitle("Ativar Localização");
@@ -329,9 +332,15 @@ public class MainActivity extends Activity implements LocationListener {
 			}
 		});
 		alerta.show();
+		}
 	}
 
 	public void chamaAlertaGPSWIFI() {
+		LocationManager locM = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		if (!locM.isProviderEnabled(LocationManager.GPS_PROVIDER) 
+				&& !locationManager.isProviderEnabled(locM.NETWORK_PROVIDER)){
+			
+		
 		AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
 		alerta.setTitle("Ativar Localização");
@@ -355,5 +364,6 @@ public class MainActivity extends Activity implements LocationListener {
 			}
 		});
 		alerta.show();
+	}
 	}
 }
