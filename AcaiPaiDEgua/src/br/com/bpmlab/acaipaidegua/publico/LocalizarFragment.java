@@ -10,6 +10,7 @@ import java.util.List;
 import com.google.android.gms.maps.model.LatLng;
 
 import br.com.bpmlab.acaipaidegua.R;
+import br.com.bpmlab.acaipaidegua.adapter.EstabelecimentoAdapter;
 import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
 import br.com.bpmlab.acaipaidegua.util.Distancia;
@@ -65,33 +66,35 @@ public class LocalizarFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_localizar,
 				container, false);
+		
 
-		String[] de = { "nome", "distancia", "endereco"};
-		int[] para = { R.id.lista_model_nome, R.id.lista_model_distancia,
-				R.id.lista_model_endereco};
+//		String[] de = { "nome", "distancia", "endereco"};
+//		int[] para = { R.id.lista_model_nome, R.id.lista_model_distancia,
+//				R.id.lista_model_endereco};
 
-		SimpleAdapter adapter = new SimpleAdapter(getActivity()
-				.getBaseContext(), listarEstabelecimentos(),
-				R.layout.model_list_estabelecimento, de, para);
+//		SimpleAdapter adapter = new SimpleAdapter(getActivity()
+//				.getBaseContext(), listarEstabelecimentos(),
+//				R.layout.model_list_estabelecimento, de, para);
 
 		//
+		EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(getActivity(), listarEstabelecimentos());
 		listaestab = (ListView) rootView
 				.findViewById(R.id.lista_estabelecimento);
 		listaestab.setAdapter(adapter);
 		pd.dismiss();
 
-		listaestab
-				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-					public void onItemClick(AdapterView<?> adapter, View v,
-							int position, long id) {
-					
-						
-		 itemE = (HashMap<String, Object>) adapter.getItemAtPosition(position);
-		 
-			
-		 realizarChamada(itemE.get("telefone").toString());
-					}
-				});
+//		listaestab
+//				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//					public void onItemClick(AdapterView<?> adapter, View v,
+//							int position, long id) {
+//					
+//						
+//		 itemE = (HashMap<String, Object>) adapter.getItemAtPosition(position);
+//		 
+//			
+//		 realizarChamada(itemE.get("telefone").toString());
+//					}
+//				});
 
 		return rootView;
 
@@ -126,40 +129,40 @@ public class LocalizarFragment extends Fragment {
 		return estabelecimentos;
 	}
 
-	private void realizarChamada(final String telefone) {
-		
-		if (!telefone.equals("")) {
-			
-			AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
-			System.out.println("num "+ telefone);
-			alerta.setTitle("Ligação");
-			alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
-			alerta.setPositiveButton("Sim",
-					new DialogInterface.OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							Uri uri = Uri.parse("tel:" + telefone);
-
-							Intent it = new Intent(Intent.ACTION_CALL, uri);
-							startActivity(it);
-
-						}
-					});
-			alerta.setNegativeButton("NÃ£o",
-					new DialogInterface.OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-
-						}
-					});
-			alerta.show();
-		} else {
-			Toast.makeText(getActivity(),"NÃºmero de telefone nÃ£o informado", Toast.LENGTH_SHORT).show();
-		}
-
-	}
+//	private void realizarChamada(final String telefone) {
+//		
+//		if (!telefone.equals("")) {
+//			
+//			AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
+//			System.out.println("num "+ telefone);
+//			alerta.setTitle("Ligação");
+//			alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
+//			alerta.setPositiveButton("Sim",
+//					new DialogInterface.OnClickListener() {
+//
+//						@Override
+//						public void onClick(DialogInterface dialog, int which) {
+//							Uri uri = Uri.parse("tel:" + telefone);
+//
+//							Intent it = new Intent(Intent.ACTION_CALL, uri);
+//							startActivity(it);
+//
+//						}
+//					});
+//			alerta.setNegativeButton("NÃ£o",
+//					new DialogInterface.OnClickListener() {
+//
+//						@Override
+//						public void onClick(DialogInterface dialog, int which) {
+//
+//						}
+//					});
+//			alerta.show();
+//		} else {
+//			Toast.makeText(getActivity(),"Número de telefone não informado", Toast.LENGTH_SHORT).show();
+//		}
+//
+//	}
 	
 		public void escolherMelhorLatLng(){
 		MainActivity ma = (MainActivity) getActivity();
