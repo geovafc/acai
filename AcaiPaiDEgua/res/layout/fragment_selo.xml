@@ -20,10 +20,10 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:gravity="fill_horizontal"
             android:layout_gravity="fill_horizontal"
-            android:textColor="@color/branco"
-            android:text="@string/selotexto" />
+            android:gravity="fill_horizontal"
+            android:text="@string/selotexto"
+            android:textColor="@color/branco" />
 
         <TextView
             android:id="@+id/textView3"
