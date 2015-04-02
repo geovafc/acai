@@ -1,13 +1,11 @@
 package br.com.bpmlab.acaipaidegua.publico;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.bpmlab.acaipaidegua.R;
 import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -15,10 +13,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import android.app.Fragment;
-import android.content.Context;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -41,6 +36,7 @@ public class MapaFragment extends Fragment {
 	private Double lastLonUsuario;
 	private String nome;
 	LatLng meuLocal;
+
 	public MapaFragment() {
 	}
 
@@ -59,9 +55,8 @@ public class MapaFragment extends Fragment {
 		} catch (InflateException e) {
 
 		}
-		
-		
-		MainActivity ma = (MainActivity) getActivity(); 
+
+		MainActivity ma = (MainActivity) getActivity();
 		latUsuario = ma.lat;
 		lonUsuario = ma.lon;
 		lastLatUsuario = ma.lastLat;
@@ -90,10 +85,9 @@ public class MapaFragment extends Fragment {
 		/** mostra o mata com imagem de satï¿½lite */
 		// map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
-		System.out.println("lat "+latUsuario+ "lon "+lonUsuario
-				+ "lastLat "+lastLatUsuario+"lastLon "
-				+lastLonUsuario);
-		
+		System.out.println("lat " + latUsuario + "lon " + lonUsuario
+				+ "lastLat " + lastLatUsuario + "lastLon " + lastLonUsuario);
+
 		defineMelhorCentroDaCamera();
 		// Construct a CameraPosition focusing on Mountain View and animate the
 		// camera to that position.
@@ -125,16 +119,16 @@ public class MapaFragment extends Fragment {
 
 		return rootView;
 	}
-	
-		public void defineMelhorCentroDaCamera(){
-		if (latUsuario != 0.0 && lonUsuario != 0.0){
+
+	public void defineMelhorCentroDaCamera() {
+		if (latUsuario != 0.0 && lonUsuario != 0.0) {
 			meuLocal = new LatLng(latUsuario, lonUsuario);
 			System.out.println("lat");
-		}else if (lastLatUsuario != 0.0 && lastLonUsuario != 0.0 ){
+		} else if (lastLatUsuario != 0.0 && lastLonUsuario != 0.0) {
 			System.out.println("last");
 			meuLocal = new LatLng(lastLatUsuario, lastLonUsuario);
-		} else if (lastLatUsuario == 0.0 && lastLonUsuario == 0.0){
-			
+		} else if (lastLatUsuario == 0.0 && lastLonUsuario == 0.0) {
+
 			meuLocal = new LatLng(-1.4621577, -48.4909634);
 		}
 	}

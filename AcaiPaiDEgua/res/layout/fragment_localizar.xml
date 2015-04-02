@@ -35,7 +35,7 @@
                     android:orientation="vertical" >
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/nomeDestaque"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nome:"
@@ -43,7 +43,7 @@
                         android:textColor="@color/branco" />
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/enderecoDestaque"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Endereço:"
@@ -51,7 +51,7 @@
                         android:textSize="10sp" />
 
                     <TextView
-                        android:id="@+id/textView1"
+                        android:id="@+id/distanciaDestaque"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.75"

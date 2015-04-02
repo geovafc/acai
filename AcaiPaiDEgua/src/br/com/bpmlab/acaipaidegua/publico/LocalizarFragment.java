@@ -26,9 +26,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LocalizarFragment extends Fragment {
@@ -47,6 +49,9 @@ public class LocalizarFragment extends Fragment {
 	double lonUsuario;
 	private Estabelecimento estabelecimento;
 	List<Distancia<Estabelecimento>> estabelecimentoOrdenadoDistancia;
+	private TextView nome;
+	private TextView endereco;
+	private TextView distancia;
 
 	public LocalizarFragment() {
 
@@ -55,8 +60,8 @@ public class LocalizarFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
-		estabelecimento = new Estabelecimento(); 
+
+		estabelecimento = new Estabelecimento();
 		escolherMelhorLatLng();
 
 		pd = ProgressDialog.show(getActivity(), "Aguarde", "...");
@@ -66,55 +71,32 @@ public class LocalizarFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_localizar,
 				container, false);
-		
 
-//		String[] de = { "nome", "distancia", "endereco"};
-//		int[] para = { R.id.lista_model_nome, R.id.lista_model_distancia,
-//				R.id.lista_model_endereco};
+		nome = (TextView) rootView.findViewById(R.id.nomeDestaque);
+		endereco = (TextView) rootView.findViewById(R.id.enderecoDestaque);
+		distancia = (TextView) rootView.findViewById(R.id.distanciaDestaque);
 
-//		SimpleAdapter adapter = new SimpleAdapter(getActivity()
-//				.getBaseContext(), listarEstabelecimentos(),
-//				R.layout.model_list_estabelecimento, de, para);
-
-		//
-		EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(getActivity(), listarEstabelecimentos());
+		EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(
+				getActivity(), estabelecimentosSemDestaque());
 		listaestab = (ListView) rootView
 				.findViewById(R.id.lista_estabelecimento);
 		listaestab.setAdapter(adapter);
+		estabelecimentoDestaque();
 		pd.dismiss();
-
-//		listaestab
-//				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//					public void onItemClick(AdapterView<?> adapter, View v,
-//							int position, long id) {
-//					
-//						
-//		 itemE = (HashMap<String, Object>) adapter.getItemAtPosition(position);
-//		 
-//			
-//		 realizarChamada(itemE.get("telefone").toString());
-//					}
-//				});
 
 		return rootView;
 
 	}
 
-	//
-	// public void onListItemClick(ListView l, View v, int position, long d){
-	// System.out.println("clicou");
-	//
-	// estabelecimento =(Estabelecimento) l.getAdapter().getItem(position);
-	// realizarChamada(estabelecimento.getTelefone());
-	// }
-
-	private List<HashMap<String, Object>> listarEstabelecimentos() {
+	private List<HashMap<String, Object>> estabelecimentosSemDestaque() {
 		estabelecimentos = new ArrayList<HashMap<String, Object>>();
 		estabelecimentoOrdenadoDistancia = GlobalUtil.ordenarEstabelecimentos(
 				estabelecimentoRN.obterTodos(), new BigDecimal(latUsuario),
 				new BigDecimal(lonUsuario));
 		
-		for (Distancia<Estabelecimento> ed : estabelecimentoOrdenadoDistancia) {
+		Distancia<Estabelecimento> ed;
+		for (int i=1 ; i < estabelecimentoOrdenadoDistancia.size() ; i++) {
+			ed = estabelecimentoOrdenadoDistancia.get(i);
 			distanciaFormatada = df.format(ed.getDistancia());
 			itemE = new HashMap<String, Object>();
 			itemE.put("nome", ed.getObjeto().getNome());
@@ -125,63 +107,89 @@ public class LocalizarFragment extends Fragment {
 			estabelecimentos.add(itemE);
 
 		}
+
+//		for (Distancia<Estabelecimento> ed : estabelecimentoOrdenadoDistancia) {
+//			distanciaFormatada = df.format(ed.getDistancia());
+//			itemE = new HashMap<String, Object>();
+//			itemE.put("nome", ed.getObjeto().getNome());
+//			itemE.put("distancia", distanciaFormatada + " KM");
+//			itemE.put("endereco", ed.getObjeto().getEndereco());
+//			itemE.put("telefone", ed.getObjeto().getTelefone());
+//			// item.put("ligar", R.drawable.ligar);
+//			estabelecimentos.add(itemE);
+//
+//		}
+		
 		System.out.println("lat: " + latUsuario);
 		return estabelecimentos;
 	}
-
-//	private void realizarChamada(final String telefone) {
-//		
-//		if (!telefone.equals("")) {
-//			
-//			AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
-//			System.out.println("num "+ telefone);
-//			alerta.setTitle("Ligação");
-//			alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
-//			alerta.setPositiveButton("Sim",
-//					new DialogInterface.OnClickListener() {
-//
-//						@Override
-//						public void onClick(DialogInterface dialog, int which) {
-//							Uri uri = Uri.parse("tel:" + telefone);
-//
-//							Intent it = new Intent(Intent.ACTION_CALL, uri);
-//							startActivity(it);
-//
-//						}
-//					});
-//			alerta.setNegativeButton("NÃ£o",
-//					new DialogInterface.OnClickListener() {
-//
-//						@Override
-//						public void onClick(DialogInterface dialog, int which) {
-//
-//						}
-//					});
-//			alerta.show();
-//		} else {
-//			Toast.makeText(getActivity(),"Número de telefone não informado", Toast.LENGTH_SHORT).show();
-//		}
-//
-//	}
 	
-		public void escolherMelhorLatLng(){
+	
+	public void estabelecimentoDestaque(){
+		String nomeDestaque = estabelecimentoOrdenadoDistancia.get(0)
+				.getObjeto().getNome();
+		String enderecoDestaque = estabelecimentoOrdenadoDistancia.get(0)
+				.getObjeto().getEndereco();
+		String distanciaDestaque = df.format(estabelecimentoOrdenadoDistancia
+				.get(0).getDistancia()) +" KM";
+		
+		nome.setText(nomeDestaque);
+		endereco.setText(enderecoDestaque);
+		distancia.setText(distanciaDestaque);
+	}
+	// private void realizarChamada(final String telefone) {
+	//
+	// if (!telefone.equals("")) {
+	//
+	// AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
+	// System.out.println("num "+ telefone);
+	// alerta.setTitle("Ligação");
+	// alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
+	// alerta.setPositiveButton("Sim",
+	// new DialogInterface.OnClickListener() {
+	//
+	// @Override
+	// public void onClick(DialogInterface dialog, int which) {
+	// Uri uri = Uri.parse("tel:" + telefone);
+	//
+	// Intent it = new Intent(Intent.ACTION_CALL, uri);
+	// startActivity(it);
+	//
+	// }
+	// });
+	// alerta.setNegativeButton("NÃ£o",
+	// new DialogInterface.OnClickListener() {
+	//
+	// @Override
+	// public void onClick(DialogInterface dialog, int which) {
+	//
+	// }
+	// });
+	// alerta.show();
+	// } else {
+	// Toast.makeText(getActivity(),"Número de telefone não informado",
+	// Toast.LENGTH_SHORT).show();
+	// }
+	//
+	// }
+
+	public void escolherMelhorLatLng() {
 		MainActivity ma = (MainActivity) getActivity();
-		if (ma.lat == 0.0 && ma.lon == 0.0 && ma.lastLat != 0.0 && ma.lastLon != 0.0){
+		if (ma.lat == 0.0 && ma.lon == 0.0 && ma.lastLat != 0.0
+				&& ma.lastLon != 0.0) {
 			latUsuario = ma.lastLat;
 			lonUsuario = ma.lastLon;
-			
+
 			System.out.println("melhor last");
-		}else if (ma.lat != 0.0 && ma.lon != 0.0){
+		} else if (ma.lat != 0.0 && ma.lon != 0.0) {
 			System.out.println("melhor lat");
 			latUsuario = ma.lat;
 			lonUsuario = ma.lon;
-		}else {
+		} else {
 			latUsuario = -1.4621577;
 			lonUsuario = -48.4909634;
 		}
-		
-		
-		
+
 	}
 
 }
