@@ -3,11 +3,13 @@
 
     <string name="texto">
 <![CDATA[ 
-    <h1>Açaí Pai Dégua</h1> 
+   
+<h1>Aplicação</h1>      
+<b>O aplicativo tem o intuito de identificar pontos de açaí certificados com o selo "Açaí Legal" em Belém-PA.</b>
+<h1>Desenvolvimento</h1>
+<b>Desenvolvido por Rayan Teixeira e Geovane Freitas discentes de Sistema de informação da Universidade Federal Rural da Amazônia</b>. 
      
-<b>A aplicação foi desenvilvida por alunos de Sistema de informação da Universidade Federal Rural da Amazônia</b>. 
-     
-Endere&ccedil;o: <b>Rua x</b>. 
+
     ]]>
     </string>
 
