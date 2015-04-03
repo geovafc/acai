@@ -2,71 +2,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background2" >
+    android:background="@drawable/background3"
+    android:orientation="vertical" >
 
- 
-    
-    
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="58dp"
+        android:layout_weight="0.05"
         android:orientation="vertical" >
-
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="73dp"
-            android:orientation="horizontal" >
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="74dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/common_signin_btn_icon_dark" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/nomeDestaque"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nome:"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@color/branco" />
-
-                    <TextView
-                        android:id="@+id/enderecoDestaque"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Endereço:"
-                        android:textColor="@color/branco"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:id="@+id/distanciaDestaque"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.75"
-                        android:text="Distância:"
-                        android:textColor="@color/branco"
-                        android:textSize="10sp" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
 
         <ListView
             android:id="@+id/lista_estabelecimento"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/imageView1"
+            android:layout_weight="0.05" >
+
         </ListView>
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/distanciaDestaque"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/nomeDestaque"
+            android:layout_below="@+id/nomeDestaque"
+            android:layout_weight="0.75"
+            android:text="Distância:"
+            android:textColor="@color/branco" />
+
+        <TextView
+            android:id="@+id/enderecoDestaque"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/lista_estabelecimento"
+            android:layout_alignLeft="@+id/distanciaDestaque"
+            android:text="Endereço:"
+            android:textColor="@color/branco"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/nomeDestaque"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/imageView1"
+            android:text="Nome:"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/branco" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="74dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_açai" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/enderecoDestaque"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/ic_telefone" />
+
+    </RelativeLayout>
 
 </LinearLayout>

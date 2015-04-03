@@ -1,44 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="465dp" >
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="51dp"
-            android:src="@drawable/ic_launcher" />
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ic_launcher" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:text="Açaí Pai D&apos;Égua"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/branco" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView1"
+                android:layout_centerHorizontal="true"
+                android:text="Açaí Pai D&apos;égua"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/branco" />
 
-        <TextView
-            android:id="@+id/textoapp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/textView1"
-            android:layout_marginTop="65dp"
-            android:text="TextView"
-            android:textColor="@color/branco" />
+            <TextView
+                android:id="@+id/textoapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView1"
+                android:layout_marginTop="32dp"
+                 android:textColor="@color/branco"
+                android:text="TextView" />
 
-    </RelativeLayout>
+           
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textoapp"
+                android:layout_marginTop="75dp"
+                android:text="Apoio:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/branco" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imageView2"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="26dp"
+                android:layout_toRightOf="@+id/imageView1"
+                android:src="@drawable/ufra" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/textView3"
+                android:layout_toLeftOf="@+id/imageView1"
+                android:src="@drawable/bpm4" />
+
+        </RelativeLayout>
+
+</ScrollView>
