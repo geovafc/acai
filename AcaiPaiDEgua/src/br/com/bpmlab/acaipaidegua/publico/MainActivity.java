@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements LocationListener {
 	private DrawerLayout mDrawerLayout;
@@ -39,7 +40,8 @@ public class MainActivity extends Activity implements LocationListener {
 	// slide menu items
 	private String[] navMenuTitles;
 	private TypedArray navMenuIcons;
-
+	private long lastBackPressTime = 0;
+	private Toast toast;
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
 	public double lat;
@@ -48,6 +50,7 @@ public class MainActivity extends Activity implements LocationListener {
 	public double lastLon;
 	private LocationManager locationManager;
 	String provider;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,7 @@ public class MainActivity extends Activity implements LocationListener {
 		if (lat == 0.0 && lon == 0.0) {
 			obterUltimaLocalizacao();
 		}
-		
+
 		mTitle = mDrawerTitle = getTitle();
 
 		// load slide menu items
@@ -130,8 +133,6 @@ public class MainActivity extends Activity implements LocationListener {
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		iniciarLocalizacao(locationManager);
 
-		
-
 	}
 
 	@Override
@@ -140,6 +141,20 @@ public class MainActivity extends Activity implements LocationListener {
 		System.out.println("onpause");
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		locationManager.removeUpdates(this);
+	}
+	
+	@Override
+	public void onBackPressed() {
+	  if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
+	    toast = Toast.makeText(this, "Pressione o Botão Voltar novamente para fechar o Aplicativo.", 4000);
+	    toast.show();
+	    this.lastBackPressTime = System.currentTimeMillis();
+	  } else {
+	    if (toast != null) {
+	    toast.cancel();
+	  }
+	  super.onBackPressed();
+	 }
 	}
 
 	/**
@@ -282,10 +297,14 @@ public class MainActivity extends Activity implements LocationListener {
 
 	public void iniciarLocalizacao(LocationManager locationManager) {
 
-		Criteria criteria = new Criteria();
-		provider = locationManager.getBestProvider(criteria, false);
-
-		locationManager.requestLocationUpdates(provider, 0, 0, this);
+		// Criteria criteria = new Criteria();
+		// provider = locationManager.getBestProvider(criteria, false);
+		//
+		// locationManager.requestLocationUpdates(provider, 0, 0, this);
+		locationManager.requestLocationUpdates(
+				LocationManager.NETWORK_PROVIDER, 0, 0, this);
+		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
+				0, this);
 
 	}
 
@@ -307,63 +326,67 @@ public class MainActivity extends Activity implements LocationListener {
 	public void chamaAlertaGPS() {
 		LocationManager locM = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		if (!locM.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-			
-		
-		AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-		alerta.setTitle("Ativar Localização");
-		alerta.setMessage("Ative o GPS para melhorar a precisão da sua localização."
-				+ "Deseja ligar o GPS agora?");
-		alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+			AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				Intent localSetting = new Intent(
-						android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-				startActivity(localSetting);
+			alerta.setTitle("Ativar Localização");
+			alerta.setMessage("Ative o GPS para melhorar a precisão da sua localização."
+					+ "Deseja ligar o GPS agora?");
+			alerta.setPositiveButton("Sim",
+					new DialogInterface.OnClickListener() {
 
-			}
-		});
-		alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							Intent localSetting = new Intent(
+									android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+							startActivity(localSetting);
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		});
-		alerta.show();
+						}
+					});
+			alerta.setNegativeButton("Não",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					});
+			alerta.show();
 		}
 	}
 
 	public void chamaAlertaGPSWIFI() {
 		LocationManager locM = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		if (!locM.isProviderEnabled(LocationManager.GPS_PROVIDER) 
-				&& !locationManager.isProviderEnabled(locM.NETWORK_PROVIDER)){
-			
-		
-		AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+		if (!locM.isProviderEnabled(LocationManager.GPS_PROVIDER)
+				&& !locationManager.isProviderEnabled(locM.NETWORK_PROVIDER)) {
 
-		alerta.setTitle("Ativar Localização");
-		alerta.setMessage("Melhore a precisão da sua localização."
-				+ "Deseja ligar o GPS ou o WI-FI agora?");
-		alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+			AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				Intent localSetting = new Intent(
-						android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-				startActivity(localSetting);
+			alerta.setTitle("Ativar Localização");
+			alerta.setMessage("Melhore a precisão da sua localização."
+					+ "Deseja ligar o GPS ou o WI-FI agora?");
+			alerta.setPositiveButton("Sim",
+					new DialogInterface.OnClickListener() {
 
-			}
-		});
-		alerta.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							Intent localSetting = new Intent(
+									android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+							startActivity(localSetting);
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.cancel();
-			}
-		});
-		alerta.show();
+						}
+					});
+			alerta.setNegativeButton("Não",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					});
+			alerta.show();
+		}
 	}
-	}
+	
+	
 }

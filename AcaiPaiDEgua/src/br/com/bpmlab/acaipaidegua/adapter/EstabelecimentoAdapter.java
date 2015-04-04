@@ -22,11 +22,6 @@ public class EstabelecimentoAdapter extends BaseAdapter{
 	private List<HashMap<String, Object>> listarEstabelecimentos;
 	private HashMap<String, Object> estabelecimento;
 	
-//	public EstabelecimentoAdapter (Context context, List<Estabelecimento> estabelecimentos){
-//		this.context=context;
-//		this.estabelecimentos=estabelecimentos;
-//	}
-	
 	public EstabelecimentoAdapter (Context context, List<HashMap<String, Object>> listarEstabelecimentos){
 		this.context=context;
 		this.listarEstabelecimentos=listarEstabelecimentos;
@@ -57,18 +52,22 @@ public class EstabelecimentoAdapter extends BaseAdapter{
 		String nome = (String) estabelecimento.get("nome");
 		String endereco = (String) estabelecimento.get("endereco");
 		String distancia = (String) estabelecimento.get("distancia");
+		String bairro = (String) estabelecimento.get("bairro");
 		if (convertView == null){
 			LayoutInflater layoutI = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = layoutI.inflate(R.layout.model_list_estabelecimento, null);
 		}
-		//LayoutInflater layout = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);		
-		//View v= layout.inflate(br.com.bpmlab.acaipaidegua.R.layout.fragment_localizar, null);
+		
 		TextView txtNome= (TextView) convertView.findViewById(R.id.lista_model_nome);
 		TextView txtEndereco= (TextView) convertView.findViewById(R.id.lista_model_endereco);
 		TextView txtDistancia = (TextView) convertView.findViewById(R.id.lista_model_distancia);
+		TextView txtBairro = (TextView) convertView.findViewById(R.id.lista_model_bairro);		
+		
 		txtNome.setText(nome);
 		txtEndereco.setText(endereco);
 		txtDistancia.setText(distancia);
+		txtBairro.setText(bairro);
+		
 		 ImageButton b = (ImageButton)convertView.findViewById(R.id.imageButton);
 		 b.setClickable(true);
 		 b.setFocusable(true);

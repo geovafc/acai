@@ -28,6 +28,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -52,6 +54,8 @@ public class LocalizarFragment extends Fragment {
 	private TextView nome;
 	private TextView endereco;
 	private TextView distancia;
+	private TextView bairro;
+	private ImageButton btnLigar;
 
 	public LocalizarFragment() {
 
@@ -75,7 +79,10 @@ public class LocalizarFragment extends Fragment {
 		nome = (TextView) rootView.findViewById(R.id.nomeDestaque);
 		endereco = (TextView) rootView.findViewById(R.id.enderecoDestaque);
 		distancia = (TextView) rootView.findViewById(R.id.distanciaDestaque);
-
+		bairro = (TextView) rootView.findViewById(R.id.bairroDestaque);
+		btnLigar = (ImageButton) rootView.findViewById(R.id.ligarDestaque);
+		btnLigar.setBackgroundResource(android.R.drawable.menuitem_background);
+		
 		EstabelecimentoAdapter adapter = new EstabelecimentoAdapter(
 				getActivity(), estabelecimentosSemDestaque());
 		listaestab = (ListView) rootView
@@ -83,7 +90,17 @@ public class LocalizarFragment extends Fragment {
 		listaestab.setAdapter(adapter);
 		estabelecimentoDestaque();
 		pd.dismiss();
-
+		
+		btnLigar.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String telefoneDestaque = estabelecimentoOrdenadoDistancia.get(0).getObjeto().getTelefone();
+				realizarChamada(telefoneDestaque);
+				
+			}
+		});
+		
 		return rootView;
 
 	}
@@ -103,6 +120,7 @@ public class LocalizarFragment extends Fragment {
 			itemE.put("distancia", distanciaFormatada + " KM");
 			itemE.put("endereco", ed.getObjeto().getEndereco());
 			itemE.put("telefone", ed.getObjeto().getTelefone());
+			itemE.put("bairro", ed.getObjeto().getBairro());
 			// item.put("ligar", R.drawable.ligar);
 			estabelecimentos.add(itemE);
 
@@ -132,46 +150,48 @@ public class LocalizarFragment extends Fragment {
 				.getObjeto().getEndereco();
 		String distanciaDestaque = df.format(estabelecimentoOrdenadoDistancia
 				.get(0).getDistancia()) +" KM";
+		String bairroDestaque = estabelecimentoOrdenadoDistancia.get(0).getObjeto().getBairro();
 		
 		nome.setText(nomeDestaque);
 		endereco.setText(enderecoDestaque);
 		distancia.setText(distanciaDestaque);
+		bairro.setText(bairroDestaque);
 	}
-	// private void realizarChamada(final String telefone) {
-	//
-	// if (!telefone.equals("")) {
-	//
-	// AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
-	// System.out.println("num "+ telefone);
-	// alerta.setTitle("Ligação");
-	// alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
-	// alerta.setPositiveButton("Sim",
-	// new DialogInterface.OnClickListener() {
-	//
-	// @Override
-	// public void onClick(DialogInterface dialog, int which) {
-	// Uri uri = Uri.parse("tel:" + telefone);
-	//
-	// Intent it = new Intent(Intent.ACTION_CALL, uri);
-	// startActivity(it);
-	//
-	// }
-	// });
-	// alerta.setNegativeButton("NÃ£o",
-	// new DialogInterface.OnClickListener() {
-	//
-	// @Override
-	// public void onClick(DialogInterface dialog, int which) {
-	//
-	// }
-	// });
-	// alerta.show();
-	// } else {
-	// Toast.makeText(getActivity(),"Número de telefone não informado",
-	// Toast.LENGTH_SHORT).show();
-	// }
-	//
-	// }
+	 private void realizarChamada(final String telefone) {
+	
+	 if (!telefone.equals("")) {
+	
+	 AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
+	 System.out.println("num "+ telefone);
+	 alerta.setTitle("Ligação");
+	 alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
+	 alerta.setPositiveButton("Sim",
+	 new DialogInterface.OnClickListener() {
+	
+	 @Override
+	 public void onClick(DialogInterface dialog, int which) {
+	 Uri uri = Uri.parse("tel:" + telefone);
+	
+	 Intent it = new Intent(Intent.ACTION_CALL, uri);
+	 startActivity(it);
+	
+	 }
+	 });
+	 alerta.setNegativeButton("Não",
+	 new DialogInterface.OnClickListener() {
+	
+	 @Override
+	 public void onClick(DialogInterface dialog, int which) {
+	
+	 }
+	 });
+	 alerta.show();
+	 } else {
+	 Toast.makeText(getActivity(),"Número de telefone não informado",
+	 Toast.LENGTH_SHORT).show();
+	 }
+	
+	 }
 
 	public void escolherMelhorLatLng() {
 		MainActivity ma = (MainActivity) getActivity();
