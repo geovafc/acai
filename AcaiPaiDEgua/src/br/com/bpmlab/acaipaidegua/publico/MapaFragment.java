@@ -161,7 +161,7 @@ public class MapaFragment extends Fragment {
 
 	@Override
 	public void onDestroy() {
-
+		System.out.println("destruiu");
 		if (mapfragment.isResumed()) {
 			getFragmentManager().beginTransaction().remove(mapfragment)
 					.commit();
