@@ -18,7 +18,7 @@ public class SobreApp extends Activity {
 
 		texto = (TextView) this.findViewById(R.id.textoapp);
 		Resources res = this.getResources();
-		texto.setText(Html.fromHtml(res.getString(R.string.texto)));
+		texto.setText(Html.fromHtml(res.getString(R.string.textoapp)));
 	}
 
 }

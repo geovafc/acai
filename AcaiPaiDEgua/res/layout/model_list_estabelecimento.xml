@@ -40,12 +40,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/lista_model_endereco"
-            android:layout_marginRight="24dp"
             android:layout_toLeftOf="@+id/imageButton"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/branco"
             android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/lista_model_bairro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/lista_model_endereco"
+            android:layout_alignBottom="@+id/lista_model_endereco"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/lista_model_endereco"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/branco" />
 
     </RelativeLayout>
 
