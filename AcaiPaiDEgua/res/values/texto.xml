@@ -24,7 +24,7 @@
     <string name="textoapp">
 <![CDATA[ 
 <h1>Aplicação</h1>  
-Essa aplicação funciona como uma agenda dos estabelecimentos que possuem o selo “Açaí Bom” em Belém-PA. No caso, há duas principais funções:
+<b>Essa aplicação funciona como uma agenda dos estabelecimentos que possuem o selo “Açaí Bom” em Belém-PA. No caso, há duas principais funções:</b>
     
 <b><p> 1 - Exibir no mapa da cidade todos os estabelecimentos que comercializam açaí e que possuem o selo "Açaí bom".</p> </b>
 <b><p> 2 - Listar os estabelecimentos mais próximos da localização do usuário do aplicativo, exibindo detalhes como distância em quilômetros e endereço completo.</p><b>
