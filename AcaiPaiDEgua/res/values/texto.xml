@@ -5,9 +5,9 @@
 <![CDATA[ 
    
 <h1>Selo Açaí Bom</h1>      
-     <b><p>Açaí produzido com higiene, qualidade e segurança em Belém do Pará tem identificação. 
+     <b><p>O açaí produzido com higiene, qualidade e segurança em Belém do Pará tem identificação. 
      Este é o resultado da iniciativa da Prefeitura de Belém juntamente com outras 14 instituições 
-     públicas e privadas que trabalham em parceria para garantir um nível de qualidade cada vez maior 
+     públicas e privadas, que trabalham em parceria para garantir um nível de qualidade cada vez maior 
      para o produto. Para isso, são difundidas as boas práticas em toda a cadeia produtiva do açaí, da 
      coleta do fruto à comercialização. O selo de qualidade “Açaí Bom” é uma das garantias de que o batedor 
      de açaí está cumprindo as boas práticas de manipulação. Já para o consumidor, o selo é um sinalizador de 
@@ -15,19 +15,27 @@
      aos estabelecimentos que tiverem a licença de funcionamento e atenderem ao Decreto Estadual 326/2012, que 
      estabelece requisitos higiênico-sanitários para a manipulação do açaí, como o branqueamento.</b></p>
 
+<h1>Branqueamento</h1>
+<b><p>O açaí entra no branqueador com água aquecida a 80 graus centígrados, onde permanece por 10 segundos. Em seguida, entra em tanque com água fria, onde ocorre o choque térmico para eliminação dos microrganismos. Após o branqueamento, o açaí está pronto para ser batido livre de contaminação. Esse processo garante um tempo maior de conservação do açaí sem alterar o sabor.</p></b>
+
+
     ]]>
     </string>
     <string name="textoapp">
 <![CDATA[ 
-<h1>Aplicação</h1>      
-<b><p> 1 - Através do mapa o aplicativo identifica pontos de açaí certificados com o selo "Açaí bom" em Belém-PA. Ao clicar no ponto será disponibilizado traçar a melhor rota para o estabelecimento.</p> </b>
-<b><p> 2 - Ao listar os mais próximos, é possível identificar o ponto de açaí mais próximo.</p><b>
+<h1>Aplicação</h1>  
+Essa aplicação funciona como uma agenda dos estabelecimentos que possuem o selo “Açaí Bom” em Belém-PA. No caso, há duas principais funções:
+    
+<b><p> 1 - Exibir no mapa da cidade todos os estabelecimentos que comercializam açaí e que possuem o selo "Açaí bom".</p> </b>
+<b><p> 2 - Listar os estabelecimentos mais próximos da localização do usuário do aplicativo, exibindo detalhes como distância em quilômetros e endereço completo.</p><b>
+A partir da lista de estabelecimentos mais próximos, o usuário poderá ligar para o estabelecimento. Também é possível visualizar a rota (caminho) para o estabelecimento, a partir do clique no mapa,  estabelecimento escolhido.
 
-<h1>Desenvolvimento</h1>
-<b>Desenvolvido por Rayan Teixeira e Geovane Freitas discentes de Sistema de informação da Universidade Federal Rural da Amazônia</b>. 
+<h1>Autoria</h1>
+<b>Esse aplicativo foi desenvolvido pelos discentes Geovane Freitas e Rayan Teixeira, alunos do curso de Sistemas de Informação, da Universidade Federal Rural da Amazônia, campus Belém. 
+</b>. 
 <b><h4>Contato:</h4> 
 <p>geovane.freitasc@gmail.com </p> 
-</p>rayanteixeira91@gmail.com</p> </b>
+<p>rayanteixeira91@gmail.com</p>
     ]]>
     </string>
 
