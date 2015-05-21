@@ -27,7 +27,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher2"
+        android:icon="@drawable/logosemfundo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -49,7 +49,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCJy3HvzaBKSOSpYSkpKGRJ0zFROlMEwx4" />
+            android:value="AIzaSyAXLVJy-1I6aEe6zYtYOmfM7estPd48Yt4" />
     </application>
 
 </manifest>
