@@ -1,10 +1,13 @@
 package br.com.bpmlab.acaipaidegua.publico;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.bpmlab.acaipaidegua.R;
 import br.com.bpmlab.acaipaidegua.adapter.NavDrawerListAdapter;
+import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 import br.com.bpmlab.acaipaidegua.model.NavDrawerItem;
+import br.com.bpmlab.acaipaidegua.rn.EstabelecimentoRN;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -146,7 +149,7 @@ public class MainActivity extends Activity implements LocationListener {
 	@Override
 	public void onBackPressed() {
 	  if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
-	    toast = Toast.makeText(this, "Pressione o BotÃ£o Voltar novamente para fechar o Aplicativo.", 4000);
+	    toast = Toast.makeText(this, "Pressione o botão voltar novamente para fechar o aplicativo.", 4000);
 	    toast.show();
 	    this.lastBackPressTime = System.currentTimeMillis();
 	  } else {

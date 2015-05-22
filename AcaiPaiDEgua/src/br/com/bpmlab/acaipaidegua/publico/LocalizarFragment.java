@@ -3,11 +3,8 @@ package br.com.bpmlab.acaipaidegua.publico;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-
-import com.google.android.gms.maps.model.LatLng;
 
 import br.com.bpmlab.acaipaidegua.R;
 import br.com.bpmlab.acaipaidegua.adapter.EstabelecimentoAdapter;
@@ -26,12 +23,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,13 +36,12 @@ public class LocalizarFragment extends Fragment {
 	private ListView listaestab;
 	DecimalFormat df = new DecimalFormat("0.0");
 	String distanciaFormatada;
-	private ProgressDialog progresD;
 	LocationManager lm = null;
-	ProgressDialog pd = null;
+	private ProgressDialog pd = null;
 	HashMap<String, Object> itemE;
 	double latUsuario;
 	double lonUsuario;
-	private Estabelecimento estabelecimento;
+	Estabelecimento estabelecimento;
 	List<Distancia<Estabelecimento>> estabelecimentoOrdenadoDistancia;
 	private TextView nome;
 	private TextView endereco;
@@ -163,8 +155,8 @@ public class LocalizarFragment extends Fragment {
 	
 	 AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
 	 System.out.println("num "+ telefone);
-	 alerta.setTitle("LigaÃ§Ã£o");
-	 alerta.setMessage("Deseja realizar uma ligaÃ§Ã£o para o ponto de venda de aÃ§aÃ­ ?");
+	 alerta.setTitle("Ligação");
+	 alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
 	 alerta.setPositiveButton("Sim",
 	 new DialogInterface.OnClickListener() {
 	
@@ -177,7 +169,7 @@ public class LocalizarFragment extends Fragment {
 	
 	 }
 	 });
-	 alerta.setNegativeButton("NÃ£o",
+	 alerta.setNegativeButton("Não",
 	 new DialogInterface.OnClickListener() {
 	
 	 @Override
@@ -187,7 +179,7 @@ public class LocalizarFragment extends Fragment {
 	 });
 	 alerta.show();
 	 } else {
-	 Toast.makeText(getActivity(),"NÃºmero de telefone nÃ£o informado",
+	 Toast.makeText(getActivity(),"Número de telefone não informado",
 	 Toast.LENGTH_SHORT).show();
 	 }
 	
