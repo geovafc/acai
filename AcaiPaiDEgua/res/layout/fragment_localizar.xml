@@ -26,8 +26,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_below="@+id/bairroDestaque"
             android:layout_weight="0.05" >
+
         </ListView>
 
         <TextView

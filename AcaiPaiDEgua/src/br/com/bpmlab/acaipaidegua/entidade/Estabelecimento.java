@@ -1,7 +1,5 @@
 package br.com.bpmlab.acaipaidegua.entidade;
 
-import java.math.BigDecimal;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
