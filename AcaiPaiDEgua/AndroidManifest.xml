@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.bpmlab.acaipaidegua"
-    android:versionCode="2"
-    android:versionName="1.0.1" >
+    android:versionCode="4"
+    android:versionName="1.0.3" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -27,7 +27,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logosemfundo"
+        android:icon="@drawable/ic_launcher2"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
@@ -49,7 +49,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAXLVJy-1I6aEe6zYtYOmfM7estPd48Yt4" />
+            android:value="AIzaSyC2Fomgm-bTvPDAriUtdMMPqzIiYlm6l5Q" />
     </application>
 
 </manifest>
