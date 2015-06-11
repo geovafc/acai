@@ -2,6 +2,7 @@ package br.com.bpmlab.acaipaidegua.conexao;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.DropBoxManager;
 import android.util.Log;
 import br.com.bpmlab.acaipaidegua.entidade.Estabelecimento;
 
@@ -88,10 +89,19 @@ public class DataBaseHelper<E> extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource src,
 			int oldVersion, int newVersion) {
 		try {
-			db.execSQL("DELETE FROM estabelecimento WHERE id > 0");			
-			realizarInserts(db);
+			
+			
+				db.execSQL("DELETE FROM estabelecimento WHERE id > 0");			
+				realizarInserts(db);
+				
+			
+			Log.i("Atualização","Banco atualizado com sucesso!");
+			
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			Log.e("ERRO!", "Erro ao atualizar banco");
 		}
 
 	}

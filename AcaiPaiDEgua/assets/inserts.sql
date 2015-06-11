@@ -38,7 +38,7 @@ insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitu
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Bom', 'Passagem Serrão de Castro, 302', 'Guama', '3229-3148', -1.4700934,-48.4680591);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Especial do Hermenson', 'Tv. 8 de Maio, 1437', 'Icoaraci', '98852-6410',  -1.3010467,-48.4697591);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Especial do Érmenson', 'Tv. 8 de Maio, 1437', 'Icoaraci', '98852-6410',  -1.3010467,-48.4697591);
 --FIM
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Baixinho', 'Rua Pedro Alvares Cabral, 09', 'Icoaraci', '3227-5242',  -1.3069676,-48.4761153);
@@ -77,7 +77,7 @@ insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitu
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Heron', 'Mauriti com Av. Pedro Miranda', 'Pedreira', '3254-4082',  -1.4275373,-48.4728299);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Gugu', 'Tv Mauriti, 1722', 'Telegrafo', '99173-9033', -1.430313,-48.468687);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Gugu', 'Tv Mauriti, 1722', 'Telegrafo', '3228-0852', -1.430313,-48.468687);
 --FIM
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí da Cris', 'Rua Antonio Everdosa, 1110', 'Pedreira', '3089-1118', -1.4268884,-48.4750605);
@@ -135,4 +135,13 @@ insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitud
 --FIM
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Açaí Sumano', 'Av. Pedro Alvares Cabral, 2311B', 'Telegrafo', '98382-0005',-1.4257439,-48.488744);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Açaí do Arnderson II', 'Av. Dr. Freitas, 3419 ', 'Marco', '3017-5541',-1.433269,-48.450741);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Açaí do Veloso', 'Tv. Magno de Araújo, 11', 'Telegrafo', '98239-4276',-1.430665,-48.484696);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Casa do Açaí', 'Conjunto Panorama XXI, Qd 36, 1', 'Mangueirão', '98816-3665',-1.37611,-48.436011);
 --FIM

@@ -14,7 +14,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/logosemfundo" />
+            android:src="@drawable/logocomfundodentro" />
 
         <TextView
             android:id="@+id/textView1"

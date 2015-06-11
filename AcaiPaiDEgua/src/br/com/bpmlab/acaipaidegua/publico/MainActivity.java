@@ -328,8 +328,8 @@ public class MainActivity extends Activity implements LocationListener {
 
 			AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-			alerta.setTitle("Ativar Localiza√ß√£o");
-			alerta.setMessage("Ative o GPS para melhorar a precis√£o da sua localiza√ß√£o."
+			alerta.setTitle("Ativar LocalizaÁ„o");
+			alerta.setMessage("Ative o GPS para melhorar a precis„o da sua localizaÁ„o."
 					+ "Deseja ligar o GPS agora?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
@@ -342,7 +342,7 @@ public class MainActivity extends Activity implements LocationListener {
 
 						}
 					});
-			alerta.setNegativeButton("N√£o",
+			alerta.setNegativeButton("N„o",
 					new DialogInterface.OnClickListener() {
 
 						@Override
@@ -361,8 +361,8 @@ public class MainActivity extends Activity implements LocationListener {
 
 			AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-			alerta.setTitle("Ativar Localiza√ß√£o");
-			alerta.setMessage("Melhore a precis√£o da sua localiza√ß√£o."
+			alerta.setTitle("Ativar LocalizaÁ„o");
+			alerta.setMessage("Melhore a precis„o da sua localizaÁ„o."
 					+ "Deseja ligar o GPS ou o WI-FI agora?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
@@ -375,7 +375,7 @@ public class MainActivity extends Activity implements LocationListener {
 
 						}
 					});
-			alerta.setNegativeButton("N√£o",
+			alerta.setNegativeButton("N„o",
 					new DialogInterface.OnClickListener() {
 
 						@Override
