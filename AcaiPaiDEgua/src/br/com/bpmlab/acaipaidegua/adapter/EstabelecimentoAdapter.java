@@ -53,6 +53,7 @@ public class EstabelecimentoAdapter extends BaseAdapter{
 		String endereco = (String) estabelecimento.get("endereco");
 		String distancia = (String) estabelecimento.get("distancia");
 		String bairro = (String) estabelecimento.get("bairro");
+		final String telefone = (String) estabelecimento.get("telefone");
 		if (convertView == null){
 			LayoutInflater layoutI = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = layoutI.inflate(R.layout.model_list_estabelecimento, null);
@@ -76,9 +77,8 @@ public class EstabelecimentoAdapter extends BaseAdapter{
 			
 			@Override
 			public void onClick(View v) {
-				System.out.println("clicou");			 
 					
-				 realizarChamada(estabelecimento.get("telefone").toString());
+				 realizarChamada(telefone);
 							
 				
 			}
@@ -93,8 +93,8 @@ private void realizarChamada(final String telefone) {
 			
 			AlertDialog.Builder alerta = new AlertDialog.Builder(context);
 			System.out.println("num "+ telefone);
-			alerta.setTitle("Ligação");
-			alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
+			alerta.setTitle("LigaÃ§Ã£o");
+			alerta.setMessage("Deseja realizar uma ligaÃ§Ã£o para o ponto de venda de aÃ§aÃ­ ?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
 
@@ -107,7 +107,7 @@ private void realizarChamada(final String telefone) {
 
 						}
 					});
-			alerta.setNegativeButton("Não",
+			alerta.setNegativeButton("NÃ£o",
 					new DialogInterface.OnClickListener() {
 
 						@Override
@@ -117,7 +117,7 @@ private void realizarChamada(final String telefone) {
 					});
 			alerta.show();
 		} else {
-			Toast.makeText(context,"Número de telefone no informado", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context,"NÃºmero de telefone no informado", Toast.LENGTH_SHORT).show();
 		}
 }
 
