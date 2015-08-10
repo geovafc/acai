@@ -24,11 +24,7 @@
             android:id="@+id/lista_estabelecimento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/bairroDestaque"
-            android:layout_weight="0.05" >
+            android:layout_below="@+id/bairroDestaque">
 
         </ListView>
 
@@ -51,7 +47,7 @@
             android:layout_weight="0.75"
             android:layout_marginLeft="8dp"
             android:text="Distância:"
-            android:textColor="@color/branco" />
+            android:textColor="@android:color/holo_orange_dark" />
 
         <ImageView
             android:id="@+id/imageView1"
@@ -65,6 +61,7 @@
         <ImageButton
             android:id="@+id/ligarDestaque"
             android:layout_width="wrap_content"
+            android:background="@android:color/transparent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/enderecoDestaque"
             android:layout_alignParentRight="true"

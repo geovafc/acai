@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+ 
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -12,10 +13,12 @@
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignBottom="@+id/lista_model_bairro"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="13dp"
+            android:background="@android:color/transparent"
             android:src="@drawable/ic_telefone" />
 
         <TextView
@@ -43,8 +46,9 @@
             android:layout_above="@+id/lista_model_endereco"
             android:layout_toLeftOf="@+id/imageButton"
             android:text="Medium Text"
+            android:layout_marginRight="10dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/branco"
+            android:textColor="@android:color/holo_orange_dark"
             android:textSize="13sp" />
 
         <TextView

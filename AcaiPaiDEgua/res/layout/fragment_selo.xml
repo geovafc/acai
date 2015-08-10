@@ -17,28 +17,18 @@
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/positivo" />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView1"
-            android:layout_centerHorizontal="true"
-            android:text="Açaí Bom"
-            android:textColor="@color/branco"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:src="@drawable/acaibomlogo" />
 
         <TextView
             android:id="@+id/txvoselo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/textView1"
+            android:layout_below="@+id/imageView1"
             android:layout_marginTop="28dp"
             android:text="texto"
             android:textColor="@color/branco" />

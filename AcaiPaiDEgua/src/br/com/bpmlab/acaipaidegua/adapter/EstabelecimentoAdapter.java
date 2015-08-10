@@ -93,8 +93,8 @@ private void realizarChamada(final String telefone) {
 			
 			AlertDialog.Builder alerta = new AlertDialog.Builder(context);
 			System.out.println("num "+ telefone);
-			alerta.setTitle("LigaÃ§Ã£o");
-			alerta.setMessage("Deseja realizar uma ligaÃ§Ã£o para o ponto de venda de aÃ§aÃ­ ?");
+			alerta.setTitle("Ligação");
+			alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí­ ?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
 
@@ -107,7 +107,7 @@ private void realizarChamada(final String telefone) {
 
 						}
 					});
-			alerta.setNegativeButton("NÃ£o",
+			alerta.setNegativeButton("Não",
 					new DialogInterface.OnClickListener() {
 
 						@Override
@@ -117,7 +117,7 @@ private void realizarChamada(final String telefone) {
 					});
 			alerta.show();
 		} else {
-			Toast.makeText(context,"NÃºmero de telefone no informado", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context,"Número de telefone no informado", Toast.LENGTH_SHORT).show();
 		}
 }
 
