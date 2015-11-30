@@ -296,33 +296,44 @@ insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitu
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Líder Top', 'Tv. Dom Pedro II, ent. Curuça e Bernaldo Couto', 'Umarizal','',-1.4392565,-48.4859468);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Divan', 'Feira da Bandeira Branca', 'Marco','', -1.4285052,-48.4528072);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Divan', 'Feira da Bandeira Branca', 'Marco','98129-0465', -1.4285052,-48.4528072);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Deus é Fiel', 'Av, João Paulo II, 125', 'Curió-Utinga', '',-1.4305513,-48.4504874);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Deus é Fiel', 'Av, João Paulo II, 125', 'Curió-Utinga', '98273-2609',-1.4305513,-48.4504874);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Alexandre', 'Av. Romulo Maiorana, 901', 'Marco', '',-1.4391381,-48.4643692);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Alexandre', 'Av. Romulo Maiorana, 901', 'Marco', '98045-4346 ',-1.4391381,-48.4643692);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí da Ilha', 'Rua Jabatiteua, 198', 'Marco', '',-1.4465035,-48.4584802);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí da Ilha', 'Rua Jabatiteua, 198', 'Marco', '98176-3144',-1.4465035,-48.4584802);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Carlos', 'Rua São Domingos, 434', 'Terra-Firme', '',-1.4554265,-48.4505429);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Jorge', 'Rua da Prainha, 208 ( Mercado Frigoana, 15, entroncamento )', 'Souza', '98034-1590',-1.4052734,-48.4360152);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Especial da Rosa', 'Tv. 14 de Março, 2283', 'Nazaré', '',-1.4559438,-48.4805695);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Carlos', 'Rua São Domingos, 434', 'Terra-Firme', '3224-7014 ',-1.4554265,-48.4505429);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí com Qualidade', 'Av. Rodolfo Chermont, 426 ', 'Marambaia', '',-1.4055636,-48.4531919);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Especial da Rosa', 'Tv. 14 de Março, 2283', 'Nazaré', '3224-7014',-1.4559438,-48.4805695);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Fã de Açaí', 'Tv. 14 de Março,1670 (Supermercado Nazaré) ', 'Nazaré', '',-1.4501365,-48.480592);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí com Qualidade', 'Av. Rodolfo Chermont, 426 ', 'Marambaia', '3032-2466',-1.4055636,-48.4531919);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Jorge', 'Rua da Prainha, 208 ( Mercado Frigoana, 15 )', 'Souza', '',xxxxxxxxxx);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Fã de Açaí', 'Tv. 14 de Março,1670 (Supermercado Nazaré) ', 'Nazaré', '98090-5885',-1.4501365,-48.480592);
 --FIM
-
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Barraca do Açaí', 'Av, Rômulo Maiorana (Feira da 25, box 47)', 'Marco', '3228-0990',-1.444816,-48.467848);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Venda de Açaí', 'Conj. Cordeiro de Farias, Alameda 04, 65 B ', 'Tapanã', '3088-5398',-1.3493419,-48.4635644);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí da Curuzu', 'Tv. Curuzu, 1156 ', 'Pedreira', '3236-0269 ',-1.4398405,-48.4705178);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Líder Alcindo Cacela', 'Av. Alcindo Cacela, 2177', 'Cremação', '3347-4932',-1.4559571,-48.4772862);
+--FIM
 
 
 

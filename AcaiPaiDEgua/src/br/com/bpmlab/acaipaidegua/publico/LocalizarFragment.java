@@ -155,8 +155,8 @@ public class LocalizarFragment extends Fragment {
 	
 	 AlertDialog.Builder alerta = new AlertDialog.Builder(getActivity());
 	 System.out.println("num "+ telefone);
-	 alerta.setTitle("Ligação");
-	 alerta.setMessage("Deseja realizar uma ligação para o ponto de venda de açaí ?");
+	 alerta.setTitle("LigaÃ§Ã£o");
+	 alerta.setMessage("Deseja realizar uma ligaÃ§Ã£o para o ponto de venda de aÃ§aÃ­ ?");
 	 alerta.setPositiveButton("Sim",
 	 new DialogInterface.OnClickListener() {
 	
@@ -169,7 +169,7 @@ public class LocalizarFragment extends Fragment {
 	
 	 }
 	 });
-	 alerta.setNegativeButton("Não",
+	 alerta.setNegativeButton("NÃ£o",
 	 new DialogInterface.OnClickListener() {
 	
 	 @Override
@@ -179,7 +179,7 @@ public class LocalizarFragment extends Fragment {
 	 });
 	 alerta.show();
 	 } else {
-	 Toast.makeText(getActivity(),"Número de telefone não informado",
+	 Toast.makeText(getActivity(),"NÃºmero do telefone nÃ£o informado",
 	 Toast.LENGTH_SHORT).show();
 	 }
 	
