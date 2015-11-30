@@ -85,6 +85,8 @@ public class MainActivity extends Activity implements LocationListener {
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
 				.getResourceId(2, -1)));
 
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons
+				.getResourceId(3, -1)));
 		// Recycle the typed array
 		navMenuIcons.recycle();
 
@@ -223,6 +225,11 @@ public class MainActivity extends Activity implements LocationListener {
 			fragment = new SeloFragment();
 			break;
 
+		case 3:
+			fragment = new NovidadeFragment();
+			break;
+	
+			
 		default:
 			break;
 		}

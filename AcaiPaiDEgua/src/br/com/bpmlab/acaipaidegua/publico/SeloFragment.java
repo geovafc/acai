@@ -15,10 +15,7 @@ public class SeloFragment extends Fragment {
 	View rootView;
 	private TextView textoselo;
 
-	public SeloFragment() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -34,6 +31,8 @@ public class SeloFragment extends Fragment {
 		//
 		//
 		// wv.loadUrl(url );
+		
+	
 		textoselo = (TextView) rootView.findViewById(R.id.txvoselo);
 		Resources res = this.getResources();
 		textoselo.setText(Html.fromHtml(res.getString(R.string.textoselo)));

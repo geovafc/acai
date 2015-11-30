@@ -6,12 +6,20 @@
     <string name="hello_world">Hello world!</string>
     <string name="drawer_open">Açaí PdE</string>
     <string name="drawer_close">Açaí PdE</string>
-
+	<string name="splash_text2"> Açaí PaiDégua 2.0 </string>
+	<string name="splash_text1"> Aguarde!!!</string>
+    <string name="novidade_text1"> Uma grande novidade </string>
+    <string name="novidade_text1_1">está por vir</string>
+    <string name="novidade_text2"> Está chegando a nova versão do Açaí Paidégua, cheia de novidades que você vai adorar. Muito mais interativo, com um novo visual, e diversas promoções.</string>
+    
+    
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item>Pontos de açaí</item>
         <item>Pontos próximos</item>
         <item>Selo Açaí Bom</item>
+        <item>NOVIDADE!</item>
+        
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->
@@ -20,9 +28,14 @@
         <item>@drawable/ic_mapa</item>
         <item>@drawable/ic_proximo</item>
         <item>@drawable/ic_info</item>
+        <item>@drawable/acaipdev2_68x48</item>
     </array>
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_splash">Açaí PaiDégua 2.0 </string>
 
+    
+    
+    
 </resources>
