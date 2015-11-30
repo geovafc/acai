@@ -224,7 +224,7 @@ insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitud
 insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Açaí Especial', 'Psg. Vitória,16', 'Fátima', '3249-6327',-1.4452185,-48.469889);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Açaí do Carlinho', 'Passagem Santana, 11 ', 'Terra-Firme', '3119-5354',-1.4628825,-48.4516513);
+insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Açaí do Carlinhos', 'Passagem Santana, 11 ', 'Terra-Firme', '3119-5354',-1.4628825,-48.4516513);
 --FIM
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Açaí One', 'Av. Conselheiro Furtado, 2464 ', 'Cremação', '3085-5707',-1.4564797,-48.4767772);
@@ -276,9 +276,6 @@ insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitu
 --FIM
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Bom', 'Av. Dr. Freitas, 3278 entre Estrada da Ceasa e João Paulo II', 'Marco', '980382670',-1.4326473,-48.4533454);
---FIM
---INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Carlinhos', 'Passagem Santana, 11 esquina com a Rua da Paz', 'Terra-Firme', '991403905',-1.4627775,-48.4517296);
 --FIM
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Líder Humaitá', 'Tv. Humaitá, nº 2084 esquina com Avenida Romula Maiorana', 'Marco', '',-1.4397475,-48.4674857);
