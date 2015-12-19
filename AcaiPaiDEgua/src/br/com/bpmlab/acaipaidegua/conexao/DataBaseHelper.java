@@ -22,7 +22,7 @@ public class DataBaseHelper<E> extends OrmLiteSqliteOpenHelper {
 	// estao sendo passados como parametros no construtor da classe
 	private static final String databaseName = "acai.bd";
 	// Versao desse BD
-	private static final int databaseVersion = 17;
+	private static final int databaseVersion = 18;
 	// private static Cursor cursor = openOrCreateDatabase("batedores.db",
 	// Context.MODE_PRIVATE, null) ;
 

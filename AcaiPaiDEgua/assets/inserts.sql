@@ -334,8 +334,18 @@ insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitu
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Líder Alcindo Cacela', 'Av. Alcindo Cacela, 2177', 'Cremação', '3347-4932',-1.4559571,-48.4772862);
 --FIM
-
-
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Zequinha', 'Av. 16 de novembro , 820 ', 'Mosqueiro', '3771-1051',-1.1585761,-48.4688618);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Point do Açaí', 'Rua João Tocantins Pena, 22', 'Mosqueiro', '98852-5112',-1.1652757,-48.4626707);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Deus Proverá', 'Rua São Pedro, 45', 'Bengui', '99195-9535',-1.3765615,-48.4553404);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Nutri +', 'Tv. Quintino Bocaiuva, 1940', 'Nazaré', '98032-8430',-1.4563803,-48.4854667);
+--FIM
 
 
 

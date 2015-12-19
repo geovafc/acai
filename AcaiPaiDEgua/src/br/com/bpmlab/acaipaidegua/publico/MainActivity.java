@@ -147,7 +147,7 @@ public class MainActivity extends Activity implements LocationListener {
 	@Override
 	public void onBackPressed() {
 	  if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
-	    toast = Toast.makeText(this, "Pressione o botÃ£o voltar novamente para fechar o aplicativo.", 4000);
+	    toast = Toast.makeText(this, "Pressione o botão voltar novamente para fechar o aplicativo.", 4000);
 	    toast.show();
 	    this.lastBackPressTime = System.currentTimeMillis();
 	  } else {
@@ -335,8 +335,8 @@ public class MainActivity extends Activity implements LocationListener {
 
 			AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-			alerta.setTitle("Ativar LocalizaÃ§Ã£o");
-			alerta.setMessage("Ative o GPS para melhorar a precisÃ£o da sua localizaÃ§Ã£o."
+			alerta.setTitle("Ativar Localização");
+			alerta.setMessage("Ative o GPS para melhorar a precisÃ£o da sua localização."
 					+ "Deseja ligar o GPS agora?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
@@ -349,7 +349,7 @@ public class MainActivity extends Activity implements LocationListener {
 
 						}
 					});
-			alerta.setNegativeButton("NÃ£o",
+			alerta.setNegativeButton("Não",
 					new DialogInterface.OnClickListener() {
 
 						@Override
@@ -368,8 +368,8 @@ public class MainActivity extends Activity implements LocationListener {
 
 			AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-			alerta.setTitle("Ativar LocalizaÃ§Ã£o");
-			alerta.setMessage("Melhore a precisÃ£o da sua localizaÃ§Ã£o."
+			alerta.setTitle("Ativar Localização");
+			alerta.setMessage("Melhore a precisão da sua localização."
 					+ "Deseja ligar o GPS ou o WI-FI agora?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
@@ -382,7 +382,7 @@ public class MainActivity extends Activity implements LocationListener {
 
 						}
 					});
-			alerta.setNegativeButton("NÃ£o",
+			alerta.setNegativeButton("Não",
 					new DialogInterface.OnClickListener() {
 
 						@Override
