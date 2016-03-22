@@ -1,6 +1,7 @@
 package br.com.bpmlab.acaipaidegua.publico;
 
 import java.util.ArrayList;
+
 import br.com.bpmlab.acaipaidegua.R;
 import br.com.bpmlab.acaipaidegua.adapter.NavDrawerListAdapter;
 import br.com.bpmlab.acaipaidegua.model.NavDrawerItem;
@@ -17,6 +18,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -56,6 +58,7 @@ public class MainActivity extends Activity implements LocationListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		chamaAlertaGPS();
+		chamaAlertNovaVersao();
 		if (lat == 0.0 && lon == 0.0) {
 			obterUltimaLocalizacao();
 		}
@@ -147,7 +150,7 @@ public class MainActivity extends Activity implements LocationListener {
 	@Override
 	public void onBackPressed() {
 	  if (this.lastBackPressTime < System.currentTimeMillis() - 4000) {
-	    toast = Toast.makeText(this, "Pressione o botão voltar novamente para fechar o aplicativo.", 4000);
+	    toast = Toast.makeText(this, "Pressione o botï¿½o voltar novamente para fechar o aplicativo.", 4000);
 	    toast.show();
 	    this.lastBackPressTime = System.currentTimeMillis();
 	  } else {
@@ -226,7 +229,12 @@ public class MainActivity extends Activity implements LocationListener {
 			break;
 
 		case 3:
-			fragment = new NovidadeFragment();
+			//fragment = new NovidadeFragment();
+			try {
+			    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=br.com.appacaipaidegua.acaipaidegua")));
+			} catch (android.content.ActivityNotFoundException anfe) {
+			    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=br.com.appacaipaidegua.acaipaidegua")));
+			}
 			break;
 	
 			
@@ -329,14 +337,42 @@ public class MainActivity extends Activity implements LocationListener {
 
 	}
 
+	
+	
+	
+	public void chamaAlertNovaVersao() {
+
+		AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+
+		alerta.setTitle("JÃ¡ sabe da novidade?");
+		alerta.setMessage("Estamos com um novo AÃ§aÃ­ PaidÃ©gua. Ã‰ sÃ³ clicar aqui para baixar a versÃ£o mais nova. Esta versÃ£o serÃ¡ descontinuada em breve.");
+		alerta.setPositiveButton("Baixar",
+				new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						try {
+						    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=br.com.appacaipaidegua.acaipaidegua")));
+						} catch (android.content.ActivityNotFoundException anfe) {
+						    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=br.com.appacaipaidegua.acaipaidegua")));
+						}
+					}
+				});
+		alerta.show();
+	}
+
+	
+	
+	
+	
 	public void chamaAlertaGPS() {
 		LocationManager locM = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		if (!locM.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
 			AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-			alerta.setTitle("Ativar Localização");
-			alerta.setMessage("Ative o GPS para melhorar a precisÃ£o da sua localização."
+			alerta.setTitle("Ativar LocalizaÃ§Ã£o");
+			alerta.setMessage("Ative o GPS para melhorar a precisÃ£o da sua localizaÃ§Ã£o."
 					+ "Deseja ligar o GPS agora?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
@@ -349,7 +385,7 @@ public class MainActivity extends Activity implements LocationListener {
 
 						}
 					});
-			alerta.setNegativeButton("Não",
+			alerta.setNegativeButton("NÃ£o",
 					new DialogInterface.OnClickListener() {
 
 						@Override
@@ -368,8 +404,8 @@ public class MainActivity extends Activity implements LocationListener {
 
 			AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-			alerta.setTitle("Ativar Localização");
-			alerta.setMessage("Melhore a precisão da sua localização."
+			alerta.setTitle("Ativar LocalizaÃ§Ã£o");
+			alerta.setMessage("Melhore a precisÃ£o da sua localizaÃ§Ã£o."
 					+ "Deseja ligar o GPS ou o WI-FI agora?");
 			alerta.setPositiveButton("Sim",
 					new DialogInterface.OnClickListener() {
@@ -382,7 +418,7 @@ public class MainActivity extends Activity implements LocationListener {
 
 						}
 					});
-			alerta.setNegativeButton("Não",
+			alerta.setNegativeButton("NÃ£o",
 					new DialogInterface.OnClickListener() {
 
 						@Override

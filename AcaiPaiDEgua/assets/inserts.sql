@@ -182,7 +182,7 @@ insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitud
 insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Estação Açaí', 'Av. José Bonifácio, 1250', 'São Braz', '99119-5243',-1.4576884,-48.4688368);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Açaí da Eliete', 'Cj. Panorama XXI, Qd 30', 'Mangueirão', '98812-0355',-1.376964,-48.437139);
+insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Açaí da Eliete', 'Cj. Panorama XXI, Qd 30', 'Mangueirão', '3279-0510',-1.376964,-48.437139);
 --FIM
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone,latitude, longitude) values ('Boutique do Açaí', 'Av. Nazaré, Ed. J. Rocha 1001', 'Nazaré', '98085-9283',-1.452219,-48.484069);
@@ -272,10 +272,10 @@ insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitu
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Casa do Açaí Bittencourt', 'Tv. Mauriti, 3575 ','Marco', '987273945',-1.4397486,-48.4546081);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí da Dona Francisca', 'Psg. Lago Grande, 18', 'Pratinha 1', '31157386',-1.3475963,-48.4791138);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí da Dona Francisca', 'Psg. Profeta Jeremias, 18', 'Pratinha 1', '31157386',-1.3475963,-48.4791138);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Bom', 'Av. Dr. Freitas, 3278 entre Estrada da Ceasa e João Paulo II', 'Marco', '980382670',-1.4326473,-48.4533454);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Bom', 'Av. Dr. Freitas, 3278', 'Marco', '980382670',-1.4326473,-48.4533454);
 --FIM
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Líder Humaitá', 'Tv. Humaitá, nº 2084 esquina com Avenida Romula Maiorana', 'Marco', '',-1.4397475,-48.4674857);
@@ -290,7 +290,7 @@ insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitu
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Terra do Açaí', 'Tv. Timbó, 2416 ent. Duque e 25', 'Marco', '981878381',-1.4372636,-48.463725);
 --FIM
 --INICIO
-insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí de Quintal', 'Rua do Acampamento, 355 entre Rua Nova e Canal Nova', 'Telegrafo', '991739033',-1.4286936,-48.4805058);
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí de Quintal', 'Rua do Acampamento, 355', 'Telegrafo', '991739033',-1.4286936,-48.4805058);
 --FIM
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Líder Top', 'Tv. Dom Pedro II, ent. Curuça e Bernaldo Couto', 'Umarizal','',-1.4392565,-48.4859468);
@@ -346,7 +346,45 @@ insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitu
 --INICIO
 insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Nutri +', 'Tv. Quintino Bocaiuva, 1940', 'Nazaré', '98032-8430',-1.4563803,-48.4854667);
 --FIM
-
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Loja de Açaí', 'Tv. Lomas Valentina, 813', 'Pedreira', '3088-2665',-1.4255624,-48.467824);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Big Bom Açaí', 'Tv. Curuzu, 392 entre Av. R. Miranda e Av. M. de Herval', 'Pedreira', '3119-4764',-1.4356489,-48.4767262);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí da Dalva', 'Rod. A. Montenegro, entre Rua D. Manuel ,02', 'Parque Verde', '98089-4766',-1.3736497,-48.4421443);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Bravo Açaí', 'Av. Senador Lemos, 1857', 'Telegrafo', '99360-1009',-1.4270726,-48.4845695);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Pet Açaí I', 'Cj. Maguari, Av. Principal, 200 b, entre alameda 8 e 9 ', 'Tenoné', '3278-2318',-1.3309742,,-48.4454845);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Ponto Certo', 'Rua 5ª Linha do Tenoné, 21', 'Tenoné', '3288-0058',-1.3285427,-48.440467);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Orlando', 'Magno de Araújo, feira do Telégrafo', 'Telégrafo', '98715-5975',-1.4306352,-48.484808);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Geraldo', 'Conj. Promorar, Av. Oeste, 21', 'Val-de-Cans', '3257-8175',-1.4009717693414576, -48.48988865476986);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Sabor Marajoara', 'Conj. Panorama XXI, Qd 32', 'Mangueirão', '98356-0438',-1.3766331,-48.4367091);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Domingão', 'Pas. Ceará, 26 entre Mon. Sinai e Aug. Corrêa', 'Guamá', '3259-4999',-1.4638636,-48.4565477);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Líder Batista Campos', 'Tv. Padre Eutiquio, 1845', 'Batista Campos', '3347-4932',-1.4615675,  -48.4891697);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí Bond +', 'Av. Cipriano Santos, 163', 'São Brás', '3246-3903',-1.4494991, -48.4647002);
+--FIM
+--INICIO
+insert into estabelecimento (nome, endereco, bairro, telefone, latitude, longitude) values ('Açaí do Aírton', 'Conj. Paraíso dos Passaros, Qd 22, Nº 1', 'Val-de-Cans', '3257-4602',-1.4024734,-48.4834793);
+--FIM
 
 
 
